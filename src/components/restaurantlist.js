@@ -7,6 +7,7 @@ import { IoFilter } from "react-icons/io5";
 
 export default function RestaurantList() {
     const { contacts, getContacts, searchTerm, searchRes, searchHandler } = useContextProvider();
+
     //TODO: load restaurants list from Firebase (DB)
     const dummy_restaurants = ["Dirty Birds", "Margherita Pizza", "Tapioca Express", "Taco Villa", "Croutons", "64 degrees", "AI Dente", "Bird Rock", "Blue Bowl"];
 
