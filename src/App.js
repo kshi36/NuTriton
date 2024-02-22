@@ -1,9 +1,9 @@
 import './App.css';
-import Header from './components/header';
-import Navbar from './components/navbar';
-import RestaurantList from './components/restaurantlist';
+import Header from './views/header';
+import Navbar from './views/navbar';
+import RestaurantList from './views/restaurantlist';
 
-import { ContextProvider } from "./controller/restaurantcontext";
+import { ContextProvider } from "./controllers/restaurantcontext";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {

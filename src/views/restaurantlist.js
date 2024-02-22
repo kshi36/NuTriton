@@ -1,22 +1,35 @@
 import RestaurantCard from './restaurantcard';
-import { useContextProvider } from "../controller/restaurantcontext";
+import { useContextProvider } from "../controllers/restaurantcontext";
 
 import {Link} from "react-router-dom";
+import { useEffect } from 'react';
 import { IoFilter } from "react-icons/io5";
 
 
 export default function RestaurantList() {
-    const { contacts, getContacts, searchTerm, searchRes, searchHandler } = useContextProvider();
+    const { restaurants, getRestaurants, searchTerm, searchRes, searchHandler } = useContextProvider();
 
     //TODO: load restaurants list from Firebase (DB)
-    const dummy_restaurants = ["Dirty Birds", "Margherita Pizza", "Tapioca Express", "Taco Villa", "Croutons", "64 degrees", "AI Dente", "Bird Rock", "Blue Bowl"];
+    useEffect(() => {
+        getRestaurants();
+
+        //logging
+        // restaurants.forEach((restaurant) => {console.log("restaurant data: ", restaurant)});
+    }, []);
+
+    // const dummy_restaurants = ["Dirty Birds", "Margherita Pizza", "Tapioca Express", "Taco Villa", "Croutons", "64 degrees", "AI Dente", "Bird Rock", "Blue Bowl"];
+    // const renderDummyList = dummy_restaurants.map((restaurant) => {
+    //     return <RestaurantCard restaurant={restaurant}
+    //                            key={restaurant} />
+    // });
 
     //TODO: render restaurant cards for entire list
-    const renderList = dummy_restaurants
+    //TODO: filter/sort restaurants will decrease overall list
+    const renderList = (searchTerm.length < 1 ? restaurants : searchRes)
         .map((restaurant) => {
-            return <RestaurantCard restaurant={restaurant}
-                                   key={restaurant} /> //TODO: change key to id
-        })
+        return <RestaurantCard restaurant={restaurant}
+                               key={restaurant.id} />
+    });
 
     return (
         <div className="main">
