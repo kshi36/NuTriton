@@ -1,22 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+<!-- FILEPATH: /Users/hitvarthdiwanji/Documents/Acads_UCSD/Quarter 2/CSE210/project/NuTriton/public/login.html -->
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>React App</title>
-  </head>
-  <body>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login/Signup</title>
+    <style>
+        body {
+            background-color: green;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 3px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkgreen;
+        }
+
+        .google-button {
+            background-color: #4285F4;
+        }
+
+        .email-button {
+            background-color: #b6bcc7;
+        }
+
+        .google-button:hover {
+            background-color: #357AE8; 
+        }
+        
+        .email-button:hover {
+            background-color:#969ca4;
+        }
+    </style>
+</head>
+<body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-  </body>
+    <!-- <div id="root"></div> -->
+    <div class="container">
+        <h1 style="color: black">Login/Signup</h1>
+        <form class="login">
+            <!-- <label for="email" >email:</label>  -->
+            <input type="email" placeholder="Username" name="email" required>
+            <!-- <label for="password">password:</label> -->
+            <input type="password" placeholder="Password" name="password" required>
+            <button type="submit">Login</button>
+            <br><br>
+            <button class="email-button">Sign up with Email</button>
+            <button class="google-button">Sign up with Google</button>
+        </form>
+    </div>
+</body>
 </html>
