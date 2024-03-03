@@ -8,6 +8,21 @@ import { IoFilter } from "react-icons/io5";
 export function FilterSortSelector() {
     const [show, setShow] = useState(false);
 
+    useEffect(() => {
+        const handleOutsideClick = (event) => {
+          if (show && !document.querySelector('.ui.modal').contains(event.target)) {
+            // Close the modal when clicking outside of it
+            handleClose();
+          }
+        };
+    
+        document.addEventListener('mousedown', handleOutsideClick);
+    
+        return () => {
+          document.removeEventListener('mousedown', handleOutsideClick);
+        };
+    }, [show]);
+
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
