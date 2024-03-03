@@ -13,10 +13,14 @@ export default function Signup() {
     //link redirection functionality
     const navigate = useNavigate();
 
+    //form states (email&password)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('');
 
-    async function onSubmit(e) {
+    //error states (invalid authentication)
+    const [error, setError] = useState('');
+
+    async function onSignupSubmit(e) {
         e.preventDefault();
 
         await createUserWithEmailAndPassword(auth, email, password)
@@ -24,20 +28,23 @@ export default function Signup() {
                 //user is created & logged in
                 const user = userCred.user;
                 console.log("user created:", user);
-                navigate('/login');
+                // navigate('/login');
+                navigate('/');      //after successful registration, navigate to homepage
             })
             .catch((err) => {
                 const errorCode = err.code;
                 const errorMessage = err.message;
-                console.log(errorCode, errorMessage);
+                console.log("register error:", errorCode, errorMessage);
+
+                setError(errorMessage.replace("Firebase: ",""));
             });
     }
 
     return (
         <div className="main">
             <div className="ui container">
-                <h2>Signup</h2>
-                <form className="ui form segment" onSubmit={onSubmit}>
+                <h2>Register</h2>
+                <form className="ui form segment" onSubmit={onSignupSubmit}>
                     <div className="field">
                         <label>Email</label>
                         <input type="email" name="email" placeholder="Email" required
@@ -51,11 +58,17 @@ export default function Signup() {
                                onChange={(e) => setPassword(e.target.value)}/>
                     </div>
                     <button className="ui button green" type="submit"
-                            disabled={!email || !password}>Sign Up
+                            disabled={!email || !password}>Register
                     </button>
-                    <button className="ui button grey">Sign up with Email</button>
-                    <button className="ui button red">Sign up with Google</button>
+                    {/*<button className="ui button grey">Sign up with Email</button>*/}
+                    {/*<button className="ui button red">Sign up with Google</button>*/}
+                    <NavLink to="/">
+                        <button className="ui right floated button">Skip</button>
+                    </NavLink>
                 </form>
+                <div className="ui red header">
+                    {error}
+                </div>
             </div>
         </div>
     );

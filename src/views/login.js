@@ -8,11 +8,17 @@ import { auth } from "../firebase";
 //TODO: user authentication, maybe move to controllers/authentication.js
 
 export default function Login() {
+    //link redirection functionality
     const navigate = useNavigate();
+
+    //form states (email&password)
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    function onLogin(e) {
+    //error states (invalid authentication)
+    const [error, setError] = useState('');
+
+    function onLoginSubmit(e) {
         e.preventDefault();
 
         signInWithEmailAndPassword(auth, email, password)
@@ -26,7 +32,9 @@ export default function Login() {
             .catch((err) => {
                 const errorCode = err.code;
                 const errorMessage = err.message;
-                console.log(errorCode, errorMessage);
+                console.log("login error:", errorCode, errorMessage);
+
+                setError("Incorrect login. Please try again or register a new account.");
             });
     }
 
@@ -34,7 +42,7 @@ export default function Login() {
         <div className="main">
             <div className="ui container">
                 <h2>Login</h2>
-                <form className="ui form segment">
+                <form className="ui form segment" onSubmit={onLoginSubmit}>
                     <div className="field">
                         <label>Email</label>
                         <input type="email" name="email" placeholder="Email" required
@@ -52,7 +60,13 @@ export default function Login() {
                     </button>
                     {/*<button className="ui button grey">Sign up with Email</button>*/}
                     {/*<button className="ui button red">Sign up with Google</button>*/}
+                    <NavLink to="/">
+                        <button className="ui right floated button">Skip</button>
+                    </NavLink>
                 </form>
+                <div className="ui red header">
+                    {error}
+                </div>
             </div>
         </div>
     );
