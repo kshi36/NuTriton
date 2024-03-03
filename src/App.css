@@ -33,3 +33,15 @@ i.icon {
 .center-div {
   text-align: center;
 }
+
+.selector_section {
+  padding: 10px;
+}
+
+.selector_section .button {
+  margin: 5px;
+}
+
+.selector_heading {
+  margin-right: 15px;
+}
