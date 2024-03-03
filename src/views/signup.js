@@ -6,7 +6,6 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 
 //TODO: user authentication, maybe move to controllers/authentication.js
-//TODO: add email signup functionality, add Google signup functionality
 //TODO: add UI to change to login screen
 
 export default function Signup() {
