@@ -1,0 +1,100 @@
+<html>
+ <head>
+   <title>Edit profile</title>
+   <style>
+    a {
+    text-decoration: none;
+    }
+    button{
+        margin-left: 130px;
+    }
+    .container img,
+    .container p {
+        display: inline-block;
+        vertical-align: middle;
+        
+        line-height: 0;
+        font-size: 13px; 
+        max-width: 370px;
+    }
+    .container img:first-child {
+        width: 10px; /* Set the width of the first image */
+        height: auto; /* Maintain aspect ratio */
+    }
+    .container2{
+        background-color: rgb(204, 252, 204); 
+        max-width: 370px;
+    }
+    .container2 img,
+    .container2 p {
+        display: inline-block;
+        vertical-align: middle;
+        width: 200px;
+        font-size: 15px; 
+        line-height: 0; 
+    }
+    .container2 img:first-child {
+        width: 20px; /* Set the width of the first image */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    .bottom {
+        background-color: rgb(6, 180, 6); 
+        padding: 20px; 
+        display: flex;
+        justify-content: space-between; 
+        align-items: center;
+        max-width: 330px;
+        bottom: 10px; 
+        position: relative; 
+        top: 10px; 
+    }
+    .bottom img {
+        width: 30px; 
+        height: auto; 
+    }
+    .styled-button {
+        background-color: transparent; /* Transparent background */
+        color: lightgreen; /* Light green font color */
+        padding: 15px 30px; /* Padding for the button */
+        font-size: 18px; /* Larger font size */
+        border: 2px solid lightgreen; /* Add border */
+        border-radius: 5px; /* Add border radius */
+        cursor: pointer; /* Change cursor to pointer */
+        margin-left: 90px;
+    }
+    input[type="text"] {
+        padding: 10px; /* Padding for the input */
+        border: 2px solid lightgreen; /* Light green border */
+        border-radius: 5px; /* Add border radius */
+        background-color: white; /* White background */
+        color: black; /* Black text color */
+        width:300px;
+    }
+    
+</style>
+ </head>
+ <body>
+    <div class="container">
+        <a href="profile_setting.html"><img src="../../UI/left array.png" ></a>
+        <p>Edit profile           </p>
+
+        </div>
+    <p>Name</p>
+    <input type="text" placeholder="Type here">
+    <p>Email</p>
+    <input type="text" placeholder="Type here">
+    <p>Password</p>
+    <input type="text" placeholder="Type here">
+    <h1></h1>
+  <button class="styled-button">Save Changes</button>
+
+   <div class="bottom">
+    <a href="home.html"><img src="../../UI/home 2.png" ></a>
+    <a href="maps.html"><img src="../../UI/MAPS  2.png" ></a>
+    <a href="profile.html"><img src="../../UI/PROFILE 2.png" ></a>
+    </div>
+
+   
+ </body>
+</html>
