@@ -34,6 +34,17 @@ i.icon {
   text-align: center;
 }
 
+
+.card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.fav {
+  margin-right: 10px;
+}
+=======
 .selector_section {
   padding: 10px;
 }
