@@ -1,0 +1,39 @@
+.container img,
+.container p {
+    display: inline-block;
+    vertical-align: middle;
+    width: 300px;
+}
+a {
+text-decoration: none;
+}
+
+
+.container img:last-child {
+    margin-right: 200px; 
+}
+
+.container img:first-child {
+    width: 25px; /* Set the width of the first image */
+    height: auto; /* Maintain aspect ratio */
+}
+.container img:last-child {
+    width: 25px; /* Set the width of the first image */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.bottom {
+    background-color: rgb(6, 180, 6); 
+    padding: 20px; 
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    max-width: 330px;
+    bottom: 60px; 
+    position: relative; 
+    top: 160px; 
+}
+.bottom img {
+    width: 30px; 
+    height: auto; 
+}
