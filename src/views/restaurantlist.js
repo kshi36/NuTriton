@@ -76,8 +76,9 @@ export default function RestaurantList() {
     useEffect(() => {
         getRestaurants();
 
+        console.log('incoming restaurant data:', restaurants.length);
         //logging
-        // restaurants.forEach((restaurant) => {console.log("restaurant data: ", restaurant)});
+        restaurants.forEach((restaurant) => {console.log("restaurant data: ", restaurant)});
     }, []);
 
     // const dummy_restaurants = ["Dirty Birds", "Margherita Pizza", "Tapioca Express", "Taco Villa", "Croutons", "64 degrees", "AI Dente", "Bird Rock", "Blue Bowl"];
