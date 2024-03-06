@@ -22,10 +22,10 @@ export function ContextProvider({ children }) {
         const res = await getDocs(collection(db, "restaurants"));
         if (res) {
             //console logging
-            // res.forEach((doc) => {
-            //     // doc.data() is never undefined for query doc snapshots
-            //     console.log(doc.id, " => ", doc.data());
-            // });
+            res.forEach((doc) => {
+                // doc.data() is never undefined for query doc snapshots
+                console.log(doc.id, " => ", doc.data());
+            });
 
             setRestaurants(res.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
         }
