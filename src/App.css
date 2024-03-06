@@ -33,3 +33,78 @@ i.icon {
 .center-div {
   text-align: center;
 }
+a {
+  text-decoration: none;
+  }
+  
+
+h1{
+  font-size: 50px;
+  line-height: 2; 
+}
+
+.container img,
+.container p {
+    display: inline-block;
+    vertical-align: top;
+    width: 300px;
+    font-size: 30px;
+    line-height: 0.8; 
+}
+
+
+.container img:last-child {
+    margin-right: 200px; 
+}
+
+.container img:first-child {
+    width: 30px; /* Set the width of the first image */
+    height: auto; /* Maintain aspect ratio */
+}
+.container img:last-child {
+    width: 25px; /* Set the width of the first image */
+    height: auto; /* Maintain aspect ratio */
+}
+
+
+
+.container2{
+        background-color: rgb(204, 252, 204); 
+        max-width: 370px;
+    }
+    .container2 img,
+    .container2 p {
+        display: inline-block;
+        vertical-align: middle;
+        width: 200px;
+        font-size: 15px; 
+        line-height: 0.5; 
+    }
+    .container2 img:first-child {
+        width: 20px; /* Set the width of the first image */
+        height: auto; /* Maintain aspect ratio */
+    }
+  
+.styled-button {
+      background-color: transparent; /* Transparent background */
+      color: lightgreen; /* Light green font color */
+      padding: 15px 30px; /* Padding for the button */
+      font-size: 18px; /* Larger font size */
+      border: 2px solid lightgreen; /* Add border */
+      border-radius: 5px; /* Add border radius */
+      cursor: pointer; /* Change cursor to pointer */
+      margin-left: 260px;
+  }
+  input[type="text"] {
+      padding: 10px; /* Padding for the input */
+      border: 2px solid lightgreen; /* Light green border */
+      border-radius: 5px; /* Add border radius */
+      background-color: white; /* White background */
+      color: black; /* Black text color */
+      width:300px;
+  }
+
+  .photo {
+    height: 20em;
+    width: 20em;
+  }
