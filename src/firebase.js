@@ -3,18 +3,13 @@
  *
  */
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
-import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 
-import { firebaseConfig } from "./params/params";
+import { firebaseConfig } from "./params/params.js";
 
 const app = initializeApp(firebaseConfig);
 
-/** Authentication */
-//TODO: user authentication, maybe move to controllers/authentication.js
-
 // Initialize Firebase Authentication and get a reference to the service
-// const auth = getAuth(app);
-
+export const auth = getAuth(app);
 
 export default app;
