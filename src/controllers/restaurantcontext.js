@@ -50,6 +50,11 @@ export function ContextProvider({ children }) {
         }
     }
 
+    //TODO: prices sorting
+    function sortPrices() {
+        setRestaurants(restaurants.slice().sort((r1, r2) => { return r1.Price-r2.Price }));
+    }
+
     //TODO: handle searching for restaurants & foods
     function searchHandler(searchTerm) {
         setSearchTerm(searchTerm);
@@ -58,7 +63,7 @@ export function ContextProvider({ children }) {
             const newRestaurantList = restaurants.filter((restaurant) => {
                 //TODO: functionality to search for restaurants
 
-                return restaurant.name
+                return restaurant.Name
                     .toLowerCase()
                     .includes(searchTerm.toString().toLowerCase());    //includes() matches string
             });
