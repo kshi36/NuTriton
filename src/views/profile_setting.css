@@ -1,0 +1,21 @@
+a {
+    text-decoration: none;
+    }
+   
+    
+
+    .bottom {
+        background-color: rgb(6, 180, 6); 
+        padding: 20px; 
+        display: flex;
+        justify-content: space-between; 
+        align-items: center;
+        max-width: 330px;
+        bottom: 10px; 
+        position: relative; 
+        top: 10px; 
+    }
+    .bottom img {
+        width: 30px; 
+        height: auto; 
+    }
