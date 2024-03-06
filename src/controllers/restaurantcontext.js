@@ -19,16 +19,11 @@ export function ContextProvider({ children }) {
     
     //TODO: retrieve restaurants list from Firestore
     async function getRestaurants() {
-        const res = await getDocs(collection(db, "restaurants"));
-        if (res) {
-            //console logging
-            // res.forEach((doc) => {
-            //     // doc.data() is never undefined for query doc snapshots
-            //     console.log(doc.id, " => ", doc.data());
-            // });
-
-            setRestaurants(res.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
-        }
+        // const res = await getDocs(collection(db, "restaurants"));
+        // if (res) {
+        //     setRestaurants(res.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+        // }
+        setRestaurants([{id:"Apple"}, {id:"Apple"}, {id:"Apple"}])
     }
 
     //TODO: retrieve foods list from Firestore
