@@ -94,6 +94,7 @@ export default function RestaurantList() {
                                key={restaurant.id} />
     });
 
+    //TODO: add UI - filter/sort popup menu
     return (
         <div className="main">
             <div className="ui container">
