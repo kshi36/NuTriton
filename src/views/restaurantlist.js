@@ -6,11 +6,45 @@ import { useEffect, useState } from 'react';
 import { IoFilter } from "react-icons/io5";
 
 
-export function UpdateFilter() {
-    
-}
-
 export function FilterSortSelector() {
+
+    const { filterHandler } = useContextProvider();
+
+
+    function ToggleButton({id, text}) {
+        // button toggle functionality (highlight/activate)
+        const [isActive, setActive] = useState(false);
+        const handleClick = () => {
+          setActive(!isActive);
+        };
+        const buttonClass = isActive ? 'active' : '';
+
+        return (
+          <button className={`ui toggle button ${buttonClass}`} value={id} onClick={handleClick}>
+            {text}
+          </button>
+        );
+      };
+
+    function UpdateFilter() {
+        // upon submit, update filters, reset search, and update view
+        const active_buttons = document.getElementsByClassName("active toggle button")
+        
+        var active_filters = []
+        for (let btn of active_buttons) {
+            active_filters.push(btn.getAttribute("value"))
+        }
+
+        // update filters state
+        filterHandler(active_filters);
+
+        // TODO reset searchbar
+
+        // close modal
+        handleClose();
+    }
+
+
     const [show, setShow] = useState(false);
 
     useEffect(() => {
@@ -40,19 +74,21 @@ export function FilterSortSelector() {
             <div className="header">Filters</div>
             <div className="content">
                 <div className="selector_section">
-                    <button className="ui toggle button">Vegan</button>
-                    <button className="ui toggle button">Vegetarian</button>
-                    <button className="ui toggle button">Halal</button>
-                    <button className="ui toggle button">Kosher</button>
-                    <button className="ui toggle button">No Pork</button>
-                    <button className="ui toggle button">No Beef</button>
-                    <button className="ui toggle button">No Seafood</button>
+                    <ToggleButton id={"vegan"} text={"Vegan"} />
+                    <ToggleButton id={"vegetarian"} text={"Vegetarian"} />
                 </div>
                 <div className="selector_section">
                     <p className="selector_heading">Allergens:</p>
-                    <button className="ui toggle button">Dairy Free</button>
-                    <button className="ui toggle button">Gluten Free</button>
-                    <button className="ui toggle button">No Peanuts</button>
+                    <ToggleButton id={"dairy"} text={"Dairy-Free"} />
+                    <ToggleButton id={"gluten"} text={"Gluten-Free"} />
+                    <ToggleButton id={"peanuts"} text={"No Peanuts"} />
+                    <ToggleButton id={"sesame"} text={"No Sesame"} />
+                    <ToggleButton id={"shell_fish"} text={"No Shell Fish"} />
+                    <ToggleButton id={"soy"} text={"No Soy"} />
+                    <ToggleButton id={"egg"} text={"No Eggs"} />
+                    <ToggleButton id={"fish"} text={"No Fish"} />
+                    <ToggleButton id={"tree_nuts"} text={"No Tree Nuts"} />
+                    <ToggleButton id={"wheat"} text={"No Wheat"} />
                 </div>
                 <div className="selector_section">
                     <p className="selector_heading">Sort by:</p>
@@ -65,7 +101,7 @@ export function FilterSortSelector() {
                     </div>
                 </div>
                 <div className="selector_section">
-                    <button className="ui primary button" onClick={handleClose}>Apply</button>
+                    <button className="ui primary button" onClick={UpdateFilter}>Apply</button>
                     <button className="ui button" onClick={handleClose}>Close</button>
                 </div>
             </div>
@@ -75,21 +111,21 @@ export function FilterSortSelector() {
 }
 
 export default function RestaurantList() {
-    const { restaurants, getRestaurants, searchTerm, searchRes, searchHandler } = useContextProvider();
+    const { restaurants, getRestaurants, searchTerm, searchRes, searchHandler, filterHandler } = useContextProvider();
 
     //TODO: load restaurants list from Firebase (DB)
-    useEffect(() => {
-        getRestaurants();
+    // useEffect(() => {
+    //     getRestaurants();
 
-        //logging
-        // restaurants.forEach((restaurant) => {console.log("restaurant data: ", restaurant)});
-    }, []);
+    //     //logging
+    //     // restaurants.forEach((restaurant) => {console.log("restaurant data: ", restaurant)});
+    // }, []);
 
-    // const dummy_restaurants = ["Dirty Birds", "Margherita Pizza", "Tapioca Express", "Taco Villa", "Croutons", "64 degrees", "AI Dente", "Bird Rock", "Blue Bowl"];
-    // const renderDummyList = dummy_restaurants.map((restaurant) => {
-    //     return <RestaurantCard restaurant={restaurant}
-    //                            key={restaurant} />
-    // });
+    const dummy_restaurants = ["Dirty Birds", "Margherita Pizza", "Tapioca Express", "Taco Villa", "Croutons", "64 degrees", "AI Dente", "Bird Rock", "Blue Bowl"];
+    const renderDummyList = dummy_restaurants.map((restaurant) => {
+        return <RestaurantCard restaurant={restaurant}
+                               key={restaurant} />
+    });
 
     //TODO: render restaurant cards for entire list
     //TODO: filter/sort restaurants will decrease overall list
@@ -99,15 +135,11 @@ export default function RestaurantList() {
                                key={restaurant.id} />
     });
 
-    //TODO: add UI - filter/sort popup menu
     return (
         <div className="main">
             <div className="ui container">
                 <h2>Restaurants
                     <FilterSortSelector />
-                    {/*<Link to="/add">*/}
-                    {/* <button className="ui icon button gray right"><IoFilter/></button> */}
-                    {/*</Link>*/}
                 </h2>
                 <div className="ui search">
                     <div className="ui icon input">
