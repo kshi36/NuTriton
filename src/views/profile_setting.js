@@ -16,7 +16,7 @@ import Data from "./UI/Data saver.png"
 import Report from "./UI/Report a problem.png"
 import Add from "./UI/Add an account.png"
 
-
+var perf =require('./security.js');
 
 function Profile_setting() {
   return (
@@ -35,10 +35,10 @@ function Profile_setting() {
         <p>Edit profile           </p>
         </div></div>
         </Link>
-    <div class="container" style={{marginRight:110}}><div class="container2">
-    <img src= {Security}/>
-    <p>Security           </p>
-    </div></div>
+        <Link to="/security_paper"><div class="container" style={{marginRight:110}}><div class="container2">
+    <img src= {Security}/><p>Security           </p>
+    
+    </div></div></Link>
 
     <div class="container" style={{marginRight:110}}><div class="container2">
         <img src={Notifications} />
@@ -78,7 +78,7 @@ function Profile_setting() {
 
     <div class="container" style={{marginRight:110}}><div class="container2">
     <img src= {Report}/>
-    <p>Repoet a problem           </p>
+    <p>Report a problem           </p>
     </div></div>
 
     <div class="container" style={{marginRight:110}}><div class="container2">
