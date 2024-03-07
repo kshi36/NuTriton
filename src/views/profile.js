@@ -5,7 +5,7 @@ import My_diets from "./UI/My diets.png"
 
 import Billing from "./UI/Billing.png"
 import Faq from "./UI/Faq.png"
-import {getAuth} from "firebase/auth"
+import {getAuth, deleteUser} from "firebase/auth"
 import gonc from "./UI/Guest or no connection.png"
 import profile_setting from "./profile_setting"
 import {  Route, Link } from 'react-router-dom'
@@ -17,6 +17,21 @@ export default function     Profile() {
     const auth = getAuth();
     const user = auth.currentUser;
 
+    function onLogout(){
+        auth.signOut().then(() => {
+            console.log("User signed out")
+        }).catch((error) => {
+            console.log(error.message)
+        })
+    }
+
+    function onDelete(){
+        deleteUser(auth.currentUser).then(() => {
+            console.log("User deleted")
+        }).catch((error) => {
+            console.log(error.message)
+        })
+    }
 
     if (user){
     return (
@@ -51,6 +66,9 @@ export default function     Profile() {
                 <p>Faq           </p>
                 <img src={right_arrow}  />
                 </div> 
+
+    <Link to={"/auth"}><button className="ui button green" type="submit" onClick={onLogout}>Logout</button></Link>
+    <Link to={"/auth"}><button className="ui right floated button" onClick={onDelete}>Delete Account</button></Link>
     </div>
     );}
     else{
