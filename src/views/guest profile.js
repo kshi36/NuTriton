@@ -7,12 +7,14 @@ function Guest() {
       <div className="main">
         <div className="guest_page">
           <div className="container1">
-          <img   src={gonc} alt="guest" style={{height:300, width:360,marginLeft:240}}/>
-          </div>
-   <br></br> <h1>Sorry, no profile for a Guest account.</h1>
-    
-  <br></br><Link to= "/auth"><button class="styled-button">Login \ Sign-up </button></Link>
+          <img   src={gonc} alt="guest" style={{height:300, width:300,marginLeft:200}}/>
+          <br></br> <h1>Sorry, no profile for a Guest account.</h1>
+          <br></br><Link to= "/auth"><button class="styled-button">Login \ Sign-up </button></Link>
 
+          </div>
+
+    
+  
  
   </div>
       </div>

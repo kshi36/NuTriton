@@ -22,65 +22,72 @@ function Profile_setting() {
   return (
     <div class="main">
     <div className="profile_setting">
-        <div class="container">
+        <div class="container" style={{marginLeft:450}}><div class="container1">
         <Link to="/profile"><img src={left_array} /></Link>
-        <p>Settings  </p>
+        <p >Settings  </p>
 
-        </div>
+        </div> </div>
    
-   <p >Account</p>
+        <div class="container"><p style={{marginRight:230}}>Account</p></div>
    <Link to="/edit">
-    <div class="container2">
+   <div class="container" style={{marginRight:110}}><div class="container2">
         <img src={Edit_profile} />
         <p>Edit profile           </p>
-        </div>
+        </div></div>
         </Link>
-    <div class="container2">
+    <div class="container" style={{marginRight:110}}><div class="container2">
     <img src= {Security}/>
     <p>Security           </p>
-    </div>
-    <div class="container2">
+    </div></div>
+
+    <div class="container" style={{marginRight:110}}><div class="container2">
         <img src={Notifications} />
         <p>Notifications           </p>
-        </div>
-    <div class="container2">
+        </div></div>
+
+    <div class="container" style={{marginRight:110}}><div class="container2">
             <img src={Privacy} />
             <p>Privacy           </p>
-            </div>
+            </div></div>
     
 
-   <p>Support & About</p>
-   <div class="container2">
+            <div class="container"><p style={{marginRight:230}}>Support & About</p></div>
+    <div class="container" style={{marginRight:110}}><div class="container2">
     <img src={Help} />
     <p>Help and Support </p>
-    </div>
-    <div class="container2">
+    </div></div>
+
+    <div class="container" style={{marginRight:110}}><div class="container2">
         <img src={Terms} />
         <p>Terms and Policies </p>
-        </div>
+        </div></div>
 
-   <p>Cache & celluar</p>
-   <div class="container2">
+        <div class="container"><p style={{marginRight:230}}>Cache & celluar</p></div>
+
+   <div class="container" style={{marginRight:110}}><div class="container2">
     <img src={Free}/>
     <p>Free up space           </p>
-    </div>
-    <div class="container2">
+    </div></div>
+
+    <div class="container" style={{marginRight:110}}><div class="container2">
         <img src={Data}/>
         <p>Data Saver           </p>
-        </div>
+        </div></div>
 
-   <p>Actions</p>
-   <div class="container2">
+    <div class="container"><p style={{marginRight:230}}>Actions</p></div>
+
+    <div class="container" style={{marginRight:110}}><div class="container2">
     <img src= {Report}/>
     <p>Repoet a problem           </p>
-    </div>
-    <div class="container2">
+    </div></div>
+
+    <div class="container" style={{marginRight:110}}><div class="container2">
         <img src={Add} />
         <p>Add account           </p>
-        </div>
+        </div></div>
 
-        </div>
-    </div>
+        </div></div>
+    
   );
 }
 

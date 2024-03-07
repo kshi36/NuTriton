@@ -1,4 +1,3 @@
-
 import Settings from "./UI/Settings.png"
 import right_arrow from "./UI/right arrow.png"
 import My_diets from "./UI/My diets.png"
@@ -41,31 +40,32 @@ export default function     Profile() {
         
         <section id="greetings">
             <h1>Greetings</h1>
+
         </section>
                 <Link to="/profile_setting">
-                <div class="container">
+                <div class="container"><div class="container1">
                     <img src={Settings}  />
                     <p>Settings           </p>
                     <img src={right_arrow}  />
-                </div>
+                </div> </div>
                 </Link>
                 
    
-    <div class="container">
+    <div class="container"><div class="container1">
         <img src={My_diets} alt="description of image"/>
         <p>My diets           </p>
         <img src={right_arrow} alt="description of image" />
-        </div>
-    <div class="container">
+        </div></div>
+    <div class="container"><div class="container1">
             <img src= {Billing}/>
             <p>Billing           </p>
             <img src={right_arrow}  />
-            </div>
-    <div class="container">
+            </div></div>
+    <div class="container"><div class="container1">
                 <img src={Faq} />
                 <p>Faq           </p>
                 <img src={right_arrow}  />
-                </div> 
+                </div> </div> 
 
     <Link to={"/auth"}><button className="ui button green" type="submit" onClick={onLogout}>Logout</button></Link>
     <Link to={"/auth"}><button className="ui right floated button" onClick={onDelete}>Delete Account</button></Link>
@@ -75,12 +75,12 @@ export default function     Profile() {
         return(
             <div className="main">
         <div className="guest_page">
-          <div className="container1">
-          <img   src={gonc} alt="guest" style={{height:300, width:360,marginLeft:240}}/>
-          </div>
-   <br></br> <h1>Sorry, no profile for a Guest account.</h1>
+        <div className="container"><div className="container1">
+          <img   src={gonc} alt="guest" style={{height:300, width:360}}/>
+          </div></div>
+          <div className="container"><br></br> <h1>Sorry, no profile for a Guest account.</h1></div>
     
-  <br></br><Link to= "/auth"><button class="styled-button">Login \ Sign-up </button></Link>
+          <div className="container"><br></br><Link to= "/auth"><button class="styled-button">Login \ Sign-up </button></Link></div>
 
  
   </div>
@@ -88,5 +88,4 @@ export default function     Profile() {
         )
     }
 }
-
 
