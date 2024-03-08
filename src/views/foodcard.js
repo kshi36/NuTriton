@@ -3,7 +3,7 @@ export default function FoodCard({ food }) {
     
     return (
         <div className="card food">
-            <div className="content">
+            <div className="content" style={{"paddingLeft": '14px'}}>
             <div style={{fontSize:'14px'}}>{Name}</div>
             <div>{Price}</div>
             </div>

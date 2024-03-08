@@ -55,7 +55,7 @@ i.icon {
 .card.food {
   color: white; 
   background-color: grey; 
-  padding: 3px; 
+  padding: 10px; 
   margin-bottom: 1px;
 }
 .card.nutrition {
