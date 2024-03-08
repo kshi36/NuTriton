@@ -171,19 +171,19 @@ export function FilterSortSelector() {
 export default function RestaurantList() {
     const { restaurants, getRestaurants, searchTerm, searchRes, searchHandler, filterHandler } = useContextProvider();
 
-    //TODO: load restaurants list from Firebase (DB)
-    // useEffect(() => {
-    //     getRestaurants();
+    // TODO: load restaurants list from Firebase (DB)
+    useEffect(() => {
+        getRestaurants();
 
-    //     //logging
-    //     // restaurants.forEach((restaurant) => {console.log("restaurant data: ", restaurant)});
-    // }, []);
+        //logging
+        // restaurants.forEach((restaurant) => {console.log("restaurant data: ", restaurant)});
+    }, []);
 
-    const dummy_restaurants = ["Dirty Birds", "Margherita Pizza", "Tapioca Express", "Taco Villa", "Croutons", "64 degrees", "AI Dente", "Bird Rock", "Blue Bowl"];
-    const renderDummyList = dummy_restaurants.map((restaurant) => {
-        return <RestaurantCard restaurant={restaurant}
-                               key={restaurant} />
-    });
+    // const dummy_restaurants = ["Dirty Birds", "Margherita Pizza", "Tapioca Express", "Taco Villa", "Croutons", "64 degrees", "AI Dente", "Bird Rock", "Blue Bowl"];
+    // const renderDummyList = dummy_restaurants.map((restaurant) => {
+    //     return <RestaurantCard restaurant={restaurant}
+    //                            key={restaurant} />
+    // });
 
     //TODO: render restaurant cards for entire list
     //TODO: filter/sort restaurants will decrease overall list
