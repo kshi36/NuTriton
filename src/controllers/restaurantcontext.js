@@ -26,76 +26,81 @@ export function ContextProvider({ children }) {
     
     // retrieve restaurants list and food for each from Firestore
     async function getRestaurants() {
-        const test_data = [
-            {
-                Name: 'Foodworx',
-                Hours: 'Monday:?8:00 a.m. – 9:00 a.m.Tuesday:?8:00 a.m. – 9:00 a.m.Wednesday:?8:00 a.m. – 9:00 a.m.Thursday:?8:00 a.m. – 9:00 a.m.Friday:?8:00 a.m. – 8:00 a.m.Saturday:?10:00 a.m. – 8:00 a.m.Sunday:?10:00 a.m. – 8:00 a.m',
-                menu: [
-                    {
-                        Name: 'Soy Sauce',
-                        Price: '$7.25',
-                        'Contains Dairy': 'FALSE',
-                        'Contains Eggs': 'FALSE',
-                        'Contains Fish': 'FALSE',
-                        'Contains Gluten': 'FALSE',
-                        'Contains Peanuts': 'FALSE',
-                        'Contains Sesame': 'FALSE',
-                        'Contains Shell Fish': 'FALSE',
-                        'Contains Soy': 'TRUE',
-                        'Contains Tree Nuts': 'FALSE',
-                        'Sustainability': 'FALSE',
-                        'Vegan': 'FALSE',
-                        'Vegetarian': 'FALSE',
-                        'Wellness': 'FALSE',
-                    },
-                    {
-                        Name: 'Seasame Sauce',
-                        Price: '$9.00',
-                        'Contains Dairy': 'FALSE',
-                        'Contains Eggs': 'FALSE',
-                        'Contains Fish': 'FALSE',
-                        'Contains Gluten': 'FALSE',
-                        'Contains Peanuts': 'FALSE',
-                        'Contains Sesame': 'TRUE',
-                        'Contains Shell Fish': 'FALSE',
-                        'Contains Soy': 'FALSE',
-                        'Contains Tree Nuts': 'FALSE',
-                        'Sustainability': 'FALSE',
-                        'Vegan': 'FALSE',
-                        'Vegetarian': 'FALSE',
-                        'Wellness': 'FALSE',
-                    },
-                    {
-                        Name: 'Egg Salad',
-                        Price: '$4.99',
-                        'Contains Dairy': 'FALSE',
-                        'Contains Eggs': 'TRUE',
-                        'Contains Fish': 'FALSE',
-                        'Contains Gluten': 'FALSE',
-                        'Contains Peanuts': 'FALSE',
-                        'Contains Sesame': 'FALSE',
-                        'Contains Shell Fish': 'FALSE',
-                        'Contains Soy': 'FALSE',
-                        'Contains Tree Nuts': 'FALSE',
-                        'Sustainability': 'FALSE',
-                        'Vegan': 'FALSE',
-                        'Vegetarian': 'TRUE',
-                        'Wellness': 'FALSE',
-                    },
-                ],
-            },
-        ];
-        setRestaurants(test_data);
-
-        // const res = await getDocs(collection(db, resdb_name));
-        // if (res) {
-        //     const res_list = res.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-        //     for (let r of res_list) {
-        //         const foods = await getDocs(collection(db, resdb_name, r.id, menudb_name));
-        //         if (foods) { r.menu = foods.docs.map((doc) => ({ id: doc.id, ...doc.data() })) }
-        //     }
-        //     setRestaurants(res_list);
-        // }
+        // change this to false to use Firebase data
+        const TESTING = true;
+        if (TESTING) {
+            const test_data = [
+                {
+                    Name: 'Foodworx',
+                    Hours: 'Monday:?8:00 a.m. – 9:00 a.m.Tuesday:?8:00 a.m. – 9:00 a.m.Wednesday:?8:00 a.m. – 9:00 a.m.Thursday:?8:00 a.m. – 9:00 a.m.Friday:?8:00 a.m. – 8:00 a.m.Saturday:?10:00 a.m. – 8:00 a.m.Sunday:?10:00 a.m. – 8:00 a.m',
+                    menu: [
+                        {
+                            Name: 'Soy Sauce',
+                            Price: '$7.25',
+                            'Contains Dairy': 'FALSE',
+                            'Contains Eggs': 'FALSE',
+                            'Contains Fish': 'FALSE',
+                            'Contains Gluten': 'FALSE',
+                            'Contains Peanuts': 'FALSE',
+                            'Contains Sesame': 'FALSE',
+                            'Contains Shell Fish': 'FALSE',
+                            'Contains Soy': 'TRUE',
+                            'Contains Tree Nuts': 'FALSE',
+                            'Sustainability': 'FALSE',
+                            'Vegan': 'FALSE',
+                            'Vegetarian': 'FALSE',
+                            'Wellness': 'FALSE',
+                        },
+                        {
+                            Name: 'Seasame Sauce',
+                            Price: '$9.00',
+                            'Contains Dairy': 'FALSE',
+                            'Contains Eggs': 'FALSE',
+                            'Contains Fish': 'FALSE',
+                            'Contains Gluten': 'FALSE',
+                            'Contains Peanuts': 'FALSE',
+                            'Contains Sesame': 'TRUE',
+                            'Contains Shell Fish': 'FALSE',
+                            'Contains Soy': 'FALSE',
+                            'Contains Tree Nuts': 'FALSE',
+                            'Sustainability': 'FALSE',
+                            'Vegan': 'FALSE',
+                            'Vegetarian': 'FALSE',
+                            'Wellness': 'FALSE',
+                        },
+                        {
+                            Name: 'Egg Salad',
+                            Price: '$4.99',
+                            'Contains Dairy': 'FALSE',
+                            'Contains Eggs': 'TRUE',
+                            'Contains Fish': 'FALSE',
+                            'Contains Gluten': 'FALSE',
+                            'Contains Peanuts': 'FALSE',
+                            'Contains Sesame': 'FALSE',
+                            'Contains Shell Fish': 'FALSE',
+                            'Contains Soy': 'FALSE',
+                            'Contains Tree Nuts': 'FALSE',
+                            'Sustainability': 'FALSE',
+                            'Vegan': 'FALSE',
+                            'Vegetarian': 'TRUE',
+                            'Wellness': 'FALSE',
+                        },
+                    ],
+                },
+            ];
+            setRestaurants(test_data);
+        }
+        else {
+            const res = await getDocs(collection(db, resdb_name));
+            if (res) {
+                const res_list = res.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+                for (let r of res_list) {
+                    const foods = await getDocs(collection(db, resdb_name, r.id, menudb_name));
+                    if (foods) { r.menu = foods.docs.map((doc) => ({ id: doc.id, ...doc.data() })) }
+                }
+                setRestaurants(res_list);
+            }
+        }
 
     }
 
