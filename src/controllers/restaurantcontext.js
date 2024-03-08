@@ -18,6 +18,7 @@ export function ContextProvider({ children }) {
     const [searchRes, setSearchRes] = useState([]);
     const [filterParams, setFilterParams] = useState([]);
     const [sortParam, setSortParam] = useState("");
+    const [sortAsc, setSortAsc] = useState(true);
 
     
     //TODO: retrieve restaurants list from Firestore
@@ -59,6 +60,11 @@ export function ContextProvider({ children }) {
     //TODO: handle searching for restaurants & foods
     // also add filters/sorting if specified
     function searchHandler(searchTerm) {
+        function compareSort(a, b, property, asc) {
+            // generic sorting logic
+            return sortAsc ? a[sortParam] - b[sortParam] : b[sortParam] - a[sortParam];
+        }
+
         var newRestaurantList = structuredClone(restaurants);
 
         // --- apply search filter
@@ -103,48 +109,28 @@ export function ContextProvider({ children }) {
                     this_menu.filter(food => food[filter_tuple[0]] == filter_tuple[1])
                 }
                 restaurant.menu = this_menu;
-                
-                // return restaurant.menu.filter(
-                //     food => food["Contains Dairy"] == "FALSE"
-                // )
             };
-
-             // specified sort
-            // if (params.sort_by) {
-                
-            // }
-            setSearchRes(newRestaurantList);
         }
+
+        // sort, if specified
+        if (sortParam != "") {
+            for (var restaurant in newRestaurantList) {
+                restaurant.menu.sort(compareSort);
+            }
+        }
+
+        setSearchRes(newRestaurantList);
     }
 
-    // Update filters and sorting
-    function filterHandler(params) {    
-        setFilterParams(params);
-        return searchHandler("");
-    
-        // non-empty filters
-        // if (params) {
-        //     var newRestaurantList = searchRes.filter((restaurant) => {
-        //         // filter "menu" foods
-        //         var this_manu = restaurant.menu
-        //         for (filter in filters) {
-        //             if (params.filter) {
-        //                 this_menu.filter(food => food[filter] == )
-        //             }
-        //         }
-        //         return restaurant.menu.filter(
-        //             food => food["Contains Dairy"] == "FALSE"
-        //         )
-        //     });
+    function filterHandler(filter_params, sort_params) {    
+        // Update filters and sorting
+        setFilterParams(filter_params);
+        setSortParam(sort_params[0]);
+        if (sort_params[0] != "") {
+            setSortAsc(sort_params[1] == "asc");
+        }
 
-        //      // specified sort
-        //     if (params.sort_by) {
-                
-        //     }
-        //     setSearchRes(newRestaurantList);
-        // }
-
-       
+        return searchHandler("");       
     }
     
     const value = {

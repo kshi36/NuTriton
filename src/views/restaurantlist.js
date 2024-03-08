@@ -3,16 +3,15 @@ import { useContextProvider } from "../controllers/restaurantcontext";
 
 import {Link} from "react-router-dom";
 import { useEffect, useState } from 'react';
-import { IoFilter } from "react-icons/io5";
+import { IoArrowDown, IoArrowUp, IoFilter } from "react-icons/io5";
 
 
 export function FilterSortSelector() {
 
     const { filterHandler } = useContextProvider();
 
-
     function ToggleButton({id, text}) {
-        // button toggle functionality (highlight/activate)
+        // button toggle functionality (highlight/activate), for filters
         const [isActive, setActive] = useState(false);
         const handleClick = () => {
           setActive(!isActive);
@@ -20,30 +19,92 @@ export function FilterSortSelector() {
         const buttonClass = isActive ? 'active' : '';
 
         return (
-          <button className={`ui toggle button ${buttonClass}`} value={id} onClick={handleClick}>
+          <button className={`ui toggle button filter_btn ${buttonClass}`} value={id} onClick={handleClick}>
             {text}
           </button>
         );
-      };
+    };
 
-    function UpdateFilter() {
-        // upon submit, update filters, reset search, and update view
-        const active_buttons = document.getElementsByClassName("active toggle button")
+    function ToggleSortButton({id, active, text, onToggle}) {
+        // button toggle functionality for grouped sort buttons
+        const handleGroupClick = () => {
+            onToggle(id);
+        };
         
-        var active_filters = []
-        for (let btn of active_buttons) {
-            active_filters.push(btn.getAttribute("value"))
+        const buttonClass = active ? 'active' : '';
+        
+        return (
+            <button className={`ui toggle button sort_btn ${buttonClass}`} value={id} onClick={handleGroupClick}>
+                {text}
+            </button>
+        );
+    };
+
+    function SortGroup() {
+        // grouped sort buttons, single toggle
+        const [selectedSort, setSelectedSort] = useState(null);
+        const handleSortToggle = (buttonId) => {
+            setSelectedSort(buttonId === selectedSort ? null : buttonId)
+        };
+
+        return (
+            <div className="ui vertical buttons sort_btns">
+                <ToggleSortButton id={"price"} active={selectedSort === "price"} text={"Price"} onToggle={handleSortToggle} />
+                <ToggleSortButton id={"calories"} active={selectedSort === "calories"} text={"Calories"} onToggle={handleSortToggle} />
+            </div>
+        )
+    }
+
+    function SortDirButton() {
+        // button toggle functionality for sort direction (asc/desc)
+        const [SortAsc, setSortAsc] = useState(true);
+        const handleSortDir = () => {
+            setSortAsc(!SortAsc);
+        };
+
+        return (          
+          <button className="ui icon button gray left" id="sort_dir_btn" value={SortAsc ? "asc" : "desc"} onClick={handleSortDir}>{SortAsc ? <IoArrowUp/> : <IoArrowDown/>}</button>
+        );
+    };
+
+    function UpdateSelectors() {
+        function UpdateFilter() {
+            // update filters
+            const active_filter_buttons = document.getElementsByClassName("active toggle button filter_btn")
+
+            var active_filters = []
+            for (let btn of active_filter_buttons) {
+                active_filters.push(btn.getAttribute("value"))
+            }
+
+            return active_filters;
         }
 
-        // update filters state
-        filterHandler(active_filters);
+        function UpdateSort() {
+            // update sort (if selected) with sort direction
+            const active_sort_buttons = document.getElementsByClassName("active toggle button filter_btn")
+
+            if (active_sort_buttons.length > 0) {
+                const selectedSort = active_sort_buttons[0].getAttribute("value");
+                const selectedSortDir = document.getElementById("sort_dir_btn").getAttribute("value");
+                return [selectedSort, selectedSortDir];
+            }
+            else {
+                return ["", ""];
+            }
+        }
 
         // TODO reset searchbar
+
+
+        // update filters state
+        const active_filters = UpdateFilter();
+        const active_sort = UpdateSort();
+        filterHandler(active_filters, active_sort[0], active_sort[1]);
 
         // close modal
         handleClose();
     }
-
 
     const [show, setShow] = useState(false);
 
@@ -76,6 +137,8 @@ export function FilterSortSelector() {
                 <div className="selector_section">
                     <ToggleButton id={"vegan"} text={"Vegan"} />
                     <ToggleButton id={"vegetarian"} text={"Vegetarian"} />
+                    <ToggleButton id={"wellness"} text={"Healthy"} />
+                    <ToggleButton id={"sustainability"} text={"Sustainable"} />
                 </div>
                 <div className="selector_section">
                     <p className="selector_heading">Allergens:</p>
@@ -92,16 +155,11 @@ export function FilterSortSelector() {
                 </div>
                 <div className="selector_section">
                     <p className="selector_heading">Sort by:</p>
-                    <div className="ui vertical buttons sort_btns">
-                        <button className="ui button">Price</button>
-                        <button className="ui button">Time</button>
-                        <button className="ui button">Distance</button>
-                        <button className="ui button">Calories</button>
-                        <button className="ui button">Protein</button>
-                    </div>
+                    <SortGroup />
+                    <SortDirButton />
                 </div>
                 <div className="selector_section">
-                    <button className="ui primary button" onClick={UpdateFilter}>Apply</button>
+                    <button className="ui primary button" onClick={UpdateSelectors}>Apply</button>
                     <button className="ui button" onClick={handleClose}>Close</button>
                 </div>
             </div>
@@ -143,7 +201,7 @@ export default function RestaurantList() {
                 </h2>
                 <div className="ui search">
                     <div className="ui icon input">
-                        <input type="text" placeholder="Search by restaurant or entrée"
+                        <input id="search_input" type="text" placeholder="Search by restaurant or entrée"
                                value={searchTerm}
                                onChange={(e) => {
                                    searchHandler(e.target.value)
