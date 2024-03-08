@@ -1,10 +1,7 @@
 import { createContext, useContext, useState } from 'react';
 
-import app from '../firebase';
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
-
-//Retrieve Firestore (Firebase DB)
-const db = getFirestore(app);
+import { db } from '../firebase';
+import { collection, getDocs } from 'firebase/firestore/lite';
 
 const restaurantContext = createContext({});
 
@@ -40,8 +37,6 @@ export function ContextProvider({ children }) {
         //non-empty search term
         if (searchTerm !== "") {
             const newRestaurantList = restaurants.filter((restaurant) => {
-                //TODO: functionality to search for restaurants
-
                 return restaurant.name
                     .toLowerCase()
                     .includes(searchTerm.toString().toLowerCase());    //includes() matches string

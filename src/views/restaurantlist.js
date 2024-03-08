@@ -1,7 +1,6 @@
 import RestaurantCard from './restaurantcard';
 import { useContextProvider } from "../controllers/restaurantcontext";
 
-import {Link} from "react-router-dom";
 import { useEffect, useState } from 'react';
 import { IoFilter } from "react-icons/io5";
 
@@ -86,7 +85,6 @@ export default function RestaurantList() {
     //                            key={restaurant} />
     // });
 
-    //TODO: render restaurant cards for entire list
     //TODO: filter/sort restaurants will decrease overall list
     const renderList = (searchTerm.length < 1 ? restaurants : searchRes)
         .map((restaurant) => {
@@ -94,15 +92,11 @@ export default function RestaurantList() {
                                key={restaurant.id} />
     });
 
-    //TODO: add UI - filter/sort popup menu
     return (
         <div className="main">
             <div className="ui container">
                 <h2>Restaurants
                     <FilterSortSelector />
-                    {/*<Link to="/add">*/}
-                    {/* <button className="ui icon button gray right"><IoFilter/></button> */}
-                    {/*</Link>*/}
                 </h2>
                 <div className="ui search">
                     <div className="ui icon input">
