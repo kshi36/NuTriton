@@ -31,7 +31,25 @@ export function ContextProvider({ children }) {
             //     console.log(doc.id, " => ", doc.data());
             // });
 
-            setRestaurants(res.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+            const fulldocs = [];
+            for (const doc of res.docs) {
+                //TODO: retrieve foods list from Firestore
+                //retrieve food menu from every restaurant
+                const foodRes = await getDocs(collection(db, "restaurants", doc.id, "menu"));
+
+                //food data console logging
+                // foodRes.forEach((foodDoc) => {
+                //     // doc.data() is never undefined for query doc snapshots
+                //     console.log(foodDoc.id, " => ", foodDoc.data());
+                // });
+
+    //TODO: retrieve foods list from Firestore
+                const foods = foodRes.docs.map((foodDoc) => ({ id: foodDoc.id, ...foodDoc.data() }));
+
+                fulldocs.push({id: doc.id, foods, ...doc.data()});
+
+                setRestaurants(fulldocs);
+            }
         }
     }
 
@@ -47,6 +65,7 @@ export function ContextProvider({ children }) {
         }
 
         var newRestaurantList = structuredClone(restaurants);
+        console.log('clone, ', newRestaurantList);
 
         // --- apply search filter
         setSearchTerm(searchTerm);
@@ -82,22 +101,25 @@ export function ContextProvider({ children }) {
         ])
         if (filterParams.length > 0) {
             // newRestaurantList = newRestaurantList.filter((restaurant) => {
-            for (var restaurant in newRestaurantList) {
+            newRestaurantList.forEach((restaurant) => {
                 // filter "menu" foods
-                var this_menu = restaurant.menu
+                // var this_menu = restaurant.foods
                 for (let j = 0; j < filterParams.length; j++) {
-                    const filter_tuple = filterMap[filterParams[j]]
-                    this_menu.filter(food => food[filter_tuple[0]] == filter_tuple[1])
+                    console.log("food: ", restaurant["foods"]);
+                    const filter_tuple = filterMap.get(filterParams[j]);
+                    // this_menu.filter(food => food[filter_tuple[0]] == filter_tuple[1])
+                    restaurant.foods.filter(food => food[filter_tuple[0]] == filter_tuple[1])
                 }
-                restaurant.menu = this_menu;
-            };
+                // restaurant.foods = this_menu;
+            })
+                
         }
 
         // sort, if specified
         if (sortParam != "") {
-            for (var restaurant in newRestaurantList) {
-                restaurant.menu.sort(compareSort);
-            }
+            newRestaurantList.forEach((restaurant) => {
+                restaurant.foods.sort(compareSort);
+            })
         }
 
         setSearchRes(newRestaurantList);
