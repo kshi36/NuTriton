@@ -8,7 +8,9 @@ import { IoArrowDown, IoArrowUp, IoFilter } from "react-icons/io5";
 
 export function FilterSortSelector() {
 
-    const { filterHandler } = useContextProvider();
+    // const { filterHandler } = useContextProvider();
+    const { restaurants, getRestaurants, searchTerm, searchRes, searchHandler, filterHandler } = useContextProvider();
+
 
     function ToggleButton({id, text}) {
         // button toggle functionality (highlight/activate), for filters
@@ -188,7 +190,8 @@ export default function RestaurantList() {
 
     //TODO: render restaurant cards for entire list
     //TODO: filter/sort restaurants will decrease overall list
-    const renderList = (searchTerm.length < 1 ? restaurants : searchRes)
+    // const renderList = (searchTerm.length < 1 ? restaurants : searchRes)
+    const renderList = searchRes
         .map((restaurant) => {
         return <RestaurantCard restaurant={restaurant}
                                key={restaurant.id} />
