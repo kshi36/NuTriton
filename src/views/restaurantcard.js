@@ -86,7 +86,7 @@ export default function RestaurantCard({ restaurant }) {
                 {/* {<MdOutlineFoodBank />} */}
                 <div className="content">
                     <div style={{fontSize:'16px'}}>{Name}</div>
-                    <div>{"wait time: " + wait_time}</div>
+                    {/* {<div>{"wait time: " + wait_time}</div>} */}
                 </div>
                 <InnerFav className="fav" onClick={toggleHover} />
             </div>               

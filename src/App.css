@@ -50,7 +50,7 @@ i.icon {
 .card.restaurant {
   background-color: rgb(207, 207, 207);
   margin-bottom: 3px;
-  padding: 5px;
+  padding: 10px;
 }
 .card.food {
   color: white; 
