@@ -39,12 +39,26 @@ i.icon {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  font-size: 12px;
 }
 
 .fav {
   margin-right: 10px;
+  display: flex;
+  align-items: center;
 }
-=======
+.card.restaurant {
+  background-color: rgb(207, 207, 207);
+  margin-bottom: 3px;
+  padding: 5px;
+}
+.card.food {
+  color: white; 
+  background-color: grey; 
+  padding: 3px; 
+  margin-bottom: 1px;
+}
+
 .selector_section {
   padding: 10px;
 }
