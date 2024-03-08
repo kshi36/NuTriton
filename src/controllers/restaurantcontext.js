@@ -16,14 +16,28 @@ export function ContextProvider({ children }) {
     //search terms & results
     const [searchTerm, setSearchTerm] = useState("");
     const [searchRes, setSearchRes] = useState([]);
+
+    // const resdb_name = "restaurant_test";
+    const resdb_name = "restaurants";
+    const menudb_name = "menu";
     
-    //TODO: retrieve restaurants list from Firestore
+    // retrieve restaurants list and food for each from Firestore
     async function getRestaurants() {
         // const res = await getDocs(collection(db, "restaurants"));
         // if (res) {
         //     setRestaurants(res.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
         // }
-        setRestaurants([{id:"Apple"}, {id:"Apple"}, {id:"Apple"}])
+
+        const res = await getDocs(collection(db, resdb_name));
+        if (res) {
+            const res_list = res.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+            for (let r of res_list) {
+                const foods = await getDocs(collection(db, resdb_name, r.id, menudb_name));
+                if (foods) { r.menu = foods.docs.map((doc) => ({ id: doc.id, ...doc.data() })) }
+            }
+            setRestaurants(res_list);
+        }
+
     }
 
     //TODO: retrieve foods list from Firestore
