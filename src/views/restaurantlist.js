@@ -119,6 +119,7 @@ export default function RestaurantList() {
                 {renderList.length > 0
                     ? renderList
                     : "No Restaurants/Foods Available"}
+                <div className='invisible-placeholder'>restaurant</div>
             </div>
         </div>
     );

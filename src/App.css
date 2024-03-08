@@ -58,7 +58,10 @@ i.icon {
   padding: 3px; 
   margin-bottom: 1px;
 }
-
+.invisible-placeholder {
+  visibility: hidden;
+  margin: 10px;
+}
 .selector_section {
   padding: 10px;
 }
