@@ -17,7 +17,7 @@ export function ContextProvider({ children }) {
     const [searchTerm, setSearchTerm] = useState("");
     const [searchRes, setSearchRes] = useState([]);
     const [filterParams, setFilterParams] = useState([]);
-    const [sortParam, setSortParam] = useState("");
+    const [sortParam, setSortParam] = useState(null);
     const [sortAsc, setSortAsc] = useState(true);
         
     // const resdb_name = "restaurant_test";
@@ -105,13 +105,7 @@ export function ContextProvider({ children }) {
     //TODO: handle searching for restaurants & foods
     // also add filters/sorting if specified
     function searchHandler(searchTerm) {
-        function compareSort(a, b, property, asc) {
-            // generic sorting logic
-            return sortAsc ? a[sortParam] - b[sortParam] : b[sortParam] - a[sortParam];
-        }
-
         let newRestaurantList = structuredClone(restaurants);
-        console.log('clone, ', newRestaurantList);
 
         // --- apply search filter
         setSearchTerm(searchTerm);
@@ -120,13 +114,17 @@ export function ContextProvider({ children }) {
             newRestaurantList = restaurants.filter((restaurant) => {
                 //TODO: functionality to search for restaurants
 
-                return restaurant.name
+                return restaurant.Name
                     .toLowerCase()
                     .includes(searchTerm.toString().toLowerCase());    //includes() matches string
             });
             // setSearchRes(newRestaurantList);
         }
         // else setSearchRes(restaurants);
+    }
+
+    function filterHandler(filter_params, sort_params) {    
+        // Update filters and sorting
 
         // --- apply selector filters
         const filterMap = new Map([
@@ -145,45 +143,48 @@ export function ContextProvider({ children }) {
             ["wellness", ["Wellness", "TRUE"]],
             ["sustainability", ["Sustainability", "TRUE"]],
         ])
-        console.log("Updated filterparams: ", filterParams);
-        if (filterParams.length > 0) {
+        setFilterParams(filter_params);
+        let newRestaurantList = structuredClone(restaurants);
+        if (filter_params.length > 0) {
             // newRestaurantList = newRestaurantList.filter((restaurant) => {
             newRestaurantList.forEach((restaurant, i) => {
                 // filter "menu" foods
-                // let this_menu = restaurant.foods
-                // const { foods, ...rest } = restaurant;
-                for (let j = 0; j < filterParams.length; j++) {
-                    console.log("food: ", newRestaurantList[i]["menu"]);
-                    const filter_tuple = filterMap.get(filterParams[j]);
-                    console.log("filter: ", filter_tuple);
+                for (let j = 0; j < filter_params.length; j++) {
+                    const filter_tuple = filterMap.get(filter_params[j]);
+                    console.log("filter tuple: ", filter_tuple);
                     // this_menu.filter(food => food[filter_tuple[0]] == filter_tuple[1])
                     newRestaurantList[i].menu = newRestaurantList[i]["menu"].filter(food => food[filter_tuple[0]] == filter_tuple[1])
                 }
                 console.log("filtered: ", newRestaurantList[i].menu);
                 // restaurant.menu = this_menu;
             })
-                
+            // setSearchRes(newRestaurantList);
         }
 
-        // sort, if specified
-        if (sortParam != "") {
+        // sort, if specified        
+        function compareSort(a, b) {
+            // generic sorting logic
+            const num_a = Number(a[sort_params[0]].replace(/[^0-9.-]+/g,""));
+            const num_b = Number(b[sort_params[0]].replace(/[^0-9.-]+/g,""));
+            
+            return num_b - num_a;
+        }
+
+        setSortParam(sort_params[0]);
+        if (sort_params[0] !== null) {
+            setSortAsc(sort_params[1] === "asc");
             newRestaurantList.forEach((restaurant, i) => {
                 newRestaurantList[i].menu = restaurant.menu.sort(compareSort);
-            })
+                if (sort_params[1] === "desc") {
+                    newRestaurantList[i].menu = newRestaurantList[i].menu.reverse();
+                }
+                console.log("sorted: ", newRestaurantList[i].menu)
+            });
+            // setSearchRes(newRestaurantList);
         }
 
+        console.log("final: ", newRestaurantList);
         setSearchRes(newRestaurantList);
-    }
-
-    function filterHandler(filter_params, sort_params) {    
-        // Update filters and sorting
-        setFilterParams(filter_params);
-        setSortParam(sort_params[0]);
-        if (sort_params[0] != "") {
-            setSortAsc(sort_params[1] == "asc");
-        }
-        console.log("set filterparams: ", filter_params);
-        return searchHandler("");       
     }
     
     const value = {
@@ -192,7 +193,9 @@ export function ContextProvider({ children }) {
         searchTerm,
         searchRes,
         searchHandler,
-        filterHandler,        
+        filterHandler,
+        filterParams,
+        sortParam,
     }
 
     return <restaurantContext.Provider value={ value }>

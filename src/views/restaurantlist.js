@@ -9,12 +9,16 @@ import { IoArrowDown, IoArrowUp, IoFilter } from "react-icons/io5";
 export function FilterSortSelector() {
 
     // const { filterHandler } = useContextProvider();
+    const [filterParams, setFilterParams] = useState([]);
     const { restaurants, getRestaurants, searchTerm, searchRes, searchHandler, filterHandler } = useContextProvider();
-
 
     function ToggleButton({id, text}) {
         // button toggle functionality (highlight/activate), for filters
         const [isActive, setActive] = useState(false);
+        // TODO: persistent state for filters
+        // if (filterParams.includes(id)) {
+        //     setActive(true);
+        // }
         const handleClick = () => {
           setActive(!isActive);
         };
@@ -51,8 +55,8 @@ export function FilterSortSelector() {
 
         return (
             <div className="ui vertical buttons sort_btns">
-                <ToggleSortButton id={"price"} active={selectedSort === "price"} text={"Price"} onToggle={handleSortToggle} />
-                <ToggleSortButton id={"calories"} active={selectedSort === "calories"} text={"Calories"} onToggle={handleSortToggle} />
+                <ToggleSortButton id={"Price"} active={selectedSort === "Price"} text={"Price"} onToggle={handleSortToggle} />
+                <ToggleSortButton id={"Calories"} active={selectedSort === "Calories"} text={"Calories"} onToggle={handleSortToggle} />
             </div>
         )
     }
@@ -79,20 +83,22 @@ export function FilterSortSelector() {
                 active_filters.push(btn.getAttribute("value"))
             }
 
+            setFilterParams(active_filters);
             return active_filters;
         }
 
         function UpdateSort() {
             // update sort (if selected) with sort direction
-            const active_sort_buttons = document.getElementsByClassName("active toggle button filter_btn")
+            const active_sort_buttons = document.getElementsByClassName("active toggle button sort_btn")
 
             if (active_sort_buttons.length > 0) {
-                const selectedSort = active_sort_buttons[0].getAttribute("value");
+                const selectedSortVal = active_sort_buttons[0].getAttribute("value");
                 const selectedSortDir = document.getElementById("sort_dir_btn").getAttribute("value");
-                return [selectedSort, selectedSortDir];
+                // setSelectedSort(selectedSortVal);
+                return [selectedSortVal, selectedSortDir];
             }
             else {
-                return ["", ""];
+                return [null, null];
             }
         }
 
@@ -102,7 +108,7 @@ export function FilterSortSelector() {
         // update filters state
         const active_filters = UpdateFilter();
         const active_sort = UpdateSort();
-        filterHandler(active_filters, active_sort[0], active_sort[1]);
+        filterHandler(active_filters, active_sort);
 
         // close modal
         handleClose();
@@ -150,7 +156,7 @@ export function FilterSortSelector() {
                     <ToggleButton id={"sesame"} text={"No Sesame"} />
                     <ToggleButton id={"shell_fish"} text={"No Shell Fish"} />
                     <ToggleButton id={"soy"} text={"No Soy"} />
-                    <ToggleButton id={"egg"} text={"No Eggs"} />
+                    <ToggleButton id={"eggs"} text={"No Eggs"} />
                     <ToggleButton id={"fish"} text={"No Fish"} />
                     <ToggleButton id={"tree_nuts"} text={"No Tree Nuts"} />
                     <ToggleButton id={"wheat"} text={"No Wheat"} />
@@ -171,7 +177,7 @@ export function FilterSortSelector() {
 }
 
 export default function RestaurantList() {
-    const { restaurants, getRestaurants, searchTerm, searchRes, searchHandler, filterHandler } = useContextProvider();
+    const { restaurants, getRestaurants, searchTerm, searchRes, searchHandler, filterHandler, filterParams, sortParam } = useContextProvider();
 
     // TODO: load restaurants list from Firebase (DB)
     useEffect(() => {
@@ -190,8 +196,8 @@ export default function RestaurantList() {
 
     //TODO: render restaurant cards for entire list
     //TODO: filter/sort restaurants will decrease overall list
-    // const renderList = (searchTerm.length < 1 ? restaurants : searchRes)
-    const renderList = searchRes
+    const renderList = (searchTerm.length < 1 && filterParams.length < 1 && sortParam == null ? restaurants : searchRes)
+    // const renderList = searchRes
         .map((restaurant) => {
         return <RestaurantCard restaurant={restaurant}
                                key={restaurant.id} />
