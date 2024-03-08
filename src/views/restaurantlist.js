@@ -174,9 +174,10 @@ export default function RestaurantList() {
     // TODO: load restaurants list from Firebase (DB)
     useEffect(() => {
         getRestaurants();
-
+        
         //logging
-        // restaurants.forEach((restaurant) => {console.log("restaurant data: ", restaurant)});
+        console.log('incoming restaurant data:', restaurants.length);
+        restaurants.forEach((restaurant) => {console.log("restaurant data: ", restaurant)});
     }, []);
 
     // const dummy_restaurants = ["Dirty Birds", "Margherita Pizza", "Tapioca Express", "Taco Villa", "Croutons", "64 degrees", "AI Dente", "Bird Rock", "Blue Bowl"];
