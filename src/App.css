@@ -47,6 +47,7 @@ i.icon {
   display: flex;
   align-items: center;
 }
+<<<<<<< HEAD
 .card.restaurant {
   background-color: rgb(207, 207, 207);
   margin-bottom: 3px;
@@ -58,6 +59,8 @@ i.icon {
   padding: 3px; 
   margin-bottom: 1px;
 }
+=======
+>>>>>>> d98e5ec0c47d91c8efe62b00907ce8025f493fb5
 
 .selector_section {
   padding: 10px;
