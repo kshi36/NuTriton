@@ -5,6 +5,11 @@ import {Link} from "react-router-dom";
 import { useEffect, useState } from 'react';
 import { IoFilter } from "react-icons/io5";
 
+
+export function UpdateFilter() {
+    
+}
+
 export function FilterSortSelector() {
     const [show, setShow] = useState(false);
 
