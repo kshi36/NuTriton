@@ -19,9 +19,12 @@ export function ContextProvider({ children }) {
     const [filterParams, setFilterParams] = useState([]);
     const [sortParam, setSortParam] = useState("");
     const [sortAsc, setSortAsc] = useState(true);
-
+        
+    // const resdb_name = "restaurant_test";
+    const resdb_name = "restaurants";
+    const menudb_name = "menu";
     
-    //TODO: retrieve restaurants list from Firestore
+    // retrieve restaurants list and food for each from Firestore
     async function getRestaurants() {
         const test_data = [
             {
@@ -84,26 +87,15 @@ export function ContextProvider({ children }) {
         ];
         setRestaurants(test_data);
 
-    // const resdb_name = "restaurant_test";
-    const resdb_name = "restaurants";
-    const menudb_name = "menu";
-    
-    // retrieve restaurants list and food for each from Firestore
-    async function getRestaurants() {
-        // const res = await getDocs(collection(db, "restaurants"));
+        // const res = await getDocs(collection(db, resdb_name));
         // if (res) {
-        //     setRestaurants(res.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+        //     const res_list = res.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        //     for (let r of res_list) {
+        //         const foods = await getDocs(collection(db, resdb_name, r.id, menudb_name));
+        //         if (foods) { r.menu = foods.docs.map((doc) => ({ id: doc.id, ...doc.data() })) }
+        //     }
+        //     setRestaurants(res_list);
         // }
-
-        const res = await getDocs(collection(db, resdb_name));
-        if (res) {
-            const res_list = res.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-            for (let r of res_list) {
-                const foods = await getDocs(collection(db, resdb_name, r.id, menudb_name));
-                if (foods) { r.menu = foods.docs.map((doc) => ({ id: doc.id, ...doc.data() })) }
-            }
-            setRestaurants(res_list);
-        }
 
     }
 
