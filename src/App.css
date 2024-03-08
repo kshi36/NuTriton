@@ -58,6 +58,9 @@ i.icon {
   padding: 3px; 
   margin-bottom: 1px;
 }
+.card.nutrition {
+  justify-content: flex-start;
+}
 .invisible-placeholder {
   visibility: hidden;
   margin: 10px;
