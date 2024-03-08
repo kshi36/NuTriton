@@ -118,7 +118,7 @@ export function ContextProvider({ children }) {
             return sortAsc ? a[sortParam] - b[sortParam] : b[sortParam] - a[sortParam];
         }
 
-        var newRestaurantList = structuredClone(restaurants);
+        let newRestaurantList = structuredClone(restaurants);
         console.log('clone, ', newRestaurantList);
 
         // --- apply search filter
@@ -143,7 +143,7 @@ export function ContextProvider({ children }) {
             ["fish", ["Contains Fish", "FALSE"]],
             ["gluten", ["Contains Gluten", "FALSE"]],
             ["peanuts", ["Contains Peanuts", "FALSE"]],
-            ["sesame", ["Contains Seasame", "FALSE"]],
+            ["sesame", ["Contains Sesame", "FALSE"]],
             ["shell_fish", ["Contains Shell Fish", "FALSE"]],
             ["soy", ["Contains Soy", "FALSE"]],
             ["tree_nuts", ["Contains Tree Nuts", "FALSE"]],
@@ -153,26 +153,30 @@ export function ContextProvider({ children }) {
             ["wellness", ["Wellness", "TRUE"]],
             ["sustainability", ["Sustainability", "TRUE"]],
         ])
+        console.log("Updated filterparams: ", filterParams);
         if (filterParams.length > 0) {
             // newRestaurantList = newRestaurantList.filter((restaurant) => {
-            newRestaurantList.forEach((restaurant) => {
+            newRestaurantList.forEach((restaurant, i) => {
                 // filter "menu" foods
-                // var this_menu = restaurant.foods
+                // let this_menu = restaurant.foods
+                // const { foods, ...rest } = restaurant;
                 for (let j = 0; j < filterParams.length; j++) {
-                    console.log("food: ", restaurant["foods"]);
+                    console.log("food: ", newRestaurantList[i]["menu"]);
                     const filter_tuple = filterMap.get(filterParams[j]);
+                    console.log("filter: ", filter_tuple);
                     // this_menu.filter(food => food[filter_tuple[0]] == filter_tuple[1])
-                    restaurant.foods.filter(food => food[filter_tuple[0]] == filter_tuple[1])
+                    newRestaurantList[i].menu = newRestaurantList[i]["menu"].filter(food => food[filter_tuple[0]] == filter_tuple[1])
                 }
-                // restaurant.foods = this_menu;
+                console.log("filtered: ", newRestaurantList[i].menu);
+                // restaurant.menu = this_menu;
             })
                 
         }
 
         // sort, if specified
         if (sortParam != "") {
-            newRestaurantList.forEach((restaurant) => {
-                restaurant.foods.sort(compareSort);
+            newRestaurantList.forEach((restaurant, i) => {
+                newRestaurantList[i].menu = restaurant.menu.sort(compareSort);
             })
         }
 
@@ -186,7 +190,7 @@ export function ContextProvider({ children }) {
         if (sort_params[0] != "") {
             setSortAsc(sort_params[1] == "asc");
         }
-
+        console.log("set filterparams: ", filter_params);
         return searchHandler("");       
     }
     
