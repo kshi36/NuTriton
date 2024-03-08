@@ -5,47 +5,7 @@ import FoodCard from './foodcard';
 import { Link } from 'react-router-dom';
 
 export default function RestaurantCard({ restaurant }) {
-    const { id, Name, hours, menu, wait_time, location } = restaurant;
-
-    
-    //TODO: load foods list from Firebase (DB)
-    // dummy foods
-    // const menu = [
-    //     {
-    //       id: 1,
-    //       Name: "Apple",
-    //       calories: 52,
-    //       carbohydrates: 14,
-    //       protein: 0.3,
-    //       fat: 0.2,
-    //       Price: "$0.1",
-    //       Contains_soy: "True",
-    //       Vegetarian: "True"
-    //     },
-    //     {
-    //       id: 2,
-    //       Name: "Banana",
-    //       calories: 52,
-    //       carbohydrates: 14,
-    //       protein: 0.3,
-    //       fat: 0.2,
-    //       Price: "$0.1",
-    //       Contains_soy: "True",
-    //       Vegetarian: "True"
-    //     },
-    //     {
-    //       id: 3,
-    //       Name: "Orange",
-    //       calories: 52,
-    //       carbohydrates: 14,
-    //       protein: 0.3,
-    //       fat: 0.2,
-    //       Price: "$0.1",
-    //       Contains_soy: "True",
-    //       Vegetarian: "True"
-    //     }
-    //   ];
-            
+    const { id, Name, Hours, menu, wait_time, location } = restaurant;            
 
     const [isCollapsed, setIsCollapsed] = useState(true); // State to manage collapsible component visibility
     const [isHovered, setIsHovered] = useState(true);
@@ -80,13 +40,30 @@ export default function RestaurantCard({ restaurant }) {
       );
     }
 
+    const daysOfWeek = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ];
+    const now = new Date();
+    const dayOfWeek = daysOfWeek[now.getDay()];
+    const index = Hours.indexOf(dayOfWeek);
+    var open_time = "";
+    if (index !== -1) {
+      const startIndex = index + dayOfWeek.length + 2;
+      let endIndex = startIndex;
+      for (let i = startIndex; i < Hours.length; i++) {
+        if (Hours[i] !== Hours[i].toLowerCase()) { // Check if uppercase letter
+          break;
+        }
+        endIndex++;
+      }
+      open_time = Hours.substring(startIndex, endIndex);
+    }
+
     return (
         <div>
             <div className="card restaurant"  onClick={toggleCollapse}>
                 {/* {<MdOutlineFoodBank />} */}
                 <div className="content">
                     <div style={{fontSize:'16px',paddingLeft:'10px'}}>{Name}</div>
-                    {/* {<div>{"wait time: " + wait_time}</div>} */}
+                    {<div>{"Today Hours: " + open_time}</div>}
                 </div>
                 <InnerFav className="fav" onClick={toggleHover} />
             </div>               
