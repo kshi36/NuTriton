@@ -14,7 +14,6 @@ export default function FoodCard({ food }) {
                 {food['Vegetarian'] === "True" && (<div>Vegetarian;&nbsp;</div>)}
                 {food['Sustainability'] === "True" && (<div>Sustainability;&nbsp;</div>)}
                 {food['Wellness'] === "True" && (<div>Wellness;&nbsp;</div>)}
-
                 </div>
                 <div className="card nutrition">
                 Contains:&nbsp;
