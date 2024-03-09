@@ -11,7 +11,6 @@ export default function FoodCard({ food }) {
                 <div className="center-div" style={{fontSize:'14px'}}>Nutrition facts:</div>
                 <div className="card">
                 {food['Vegan'] === "True" && (<div>Vegan;&nbsp;</div>)}
-
                 </div>
                 <div className="card">
                 {food["Contains Soy"] === "True" && (<div>Contains Soy;&nbsp;</div>)}

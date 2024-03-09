@@ -60,7 +60,8 @@ i.icon {
 }
 
 .selector_section {
-  padding: 10px;
+  /* padding: 10px; */
+  margin-top: 5px;
 }
 
 .selector_section .button {
