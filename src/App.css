@@ -44,6 +44,11 @@ h1{
 }
 
 .container img,
+.container{display: flex;
+
+  align-items: center;
+  justify-content: center;}
+
 .container p {
     display: inline-block;
     vertical-align: top;
@@ -51,6 +56,7 @@ h1{
     font-size: 30px;
     line-height: 0.8; 
 }
+
 
 
 .container img:last-child {
@@ -66,19 +72,43 @@ h1{
     height: auto; /* Maintain aspect ratio */
 }
 
+.container1 img,
+.container1 p {
+    display: inline-block;
+    vertical-align: top;
+    width: 600px;
+    font-size: 30px;
+    line-height: 0.8; 
+}
+
+
+.container1 img:last-child {
+    margin-right: 0px; 
+}
+
+.container1 img:first-child {
+    width: 30px; /* Set the width of the first image */
+    height: auto; /* Maintain aspect ratio */
+}
+.container1 img:last-child {
+    width: 25px; /* Set the width of the first image */
+    height: auto; /* Maintain aspect ratio */
+    float: "left";
+}
+
 
 
 .container2{
         background-color: rgb(204, 252, 204); 
-        max-width: 370px;
+        max-width: 500px;
     }
     .container2 img,
     .container2 p {
         display: inline-block;
         vertical-align: middle;
-        width: 200px;
-        font-size: 15px; 
-        line-height: 0.5; 
+        width: 400px;
+        font-size: 25px; 
+        line-height: 1; 
     }
     .container2 img:first-child {
         width: 20px; /* Set the width of the first image */
@@ -93,7 +123,7 @@ h1{
       border: 2px solid lightgreen; /* Add border */
       border-radius: 5px; /* Add border radius */
       cursor: pointer; /* Change cursor to pointer */
-      margin-left: 260px;
+     
   }
   input[type="text"] {
       padding: 10px; /* Padding for the input */
@@ -104,7 +134,22 @@ h1{
       width:300px;
   }
 
-  .photo {
-    height: 20em;
-    width: 20em;
-  }
+  .mapboxgl-marker {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border:1px solid gray;
+    background-color:lightblue;
+    background-size: cover;
+}
+
+.marker {
+  
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+  
