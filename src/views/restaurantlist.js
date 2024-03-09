@@ -1,7 +1,6 @@
 import RestaurantCard from './restaurantcard';
 import { useContextProvider } from "../controllers/restaurantcontext";
 
-import {Link} from "react-router-dom";
 import { useEffect, useState } from 'react';
 import { IoArrowDown, IoArrowUp, IoFilter } from "react-icons/io5";
 
@@ -194,7 +193,6 @@ export default function RestaurantList() {
     //                            key={restaurant} />
     // });
 
-    //TODO: render restaurant cards for entire list
     //TODO: filter/sort restaurants will decrease overall list
     const renderList = (searchTerm.length < 1 && filterParams.length < 1 && sortParam == null ? restaurants : searchRes)
     // const renderList = searchRes

@@ -5,9 +5,6 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 
-//TODO: user authentication, maybe move to controllers/authentication.js
-//TODO: add UI to change to login screen
-
 export default function Signup() {
     //link redirection functionality
     const navigate = useNavigate();
@@ -59,8 +56,6 @@ export default function Signup() {
                     <button className="ui button green" type="submit"
                             disabled={!email || !password}>Register
                     </button>
-                    {/*<button className="ui button grey">Sign up with Email</button>*/}
-                    {/*<button className="ui button red">Sign up with Google</button>*/}
                     <NavLink to="/">
                         <button className="ui right floated button">Skip</button>
                     </NavLink>
