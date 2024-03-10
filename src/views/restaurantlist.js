@@ -148,7 +148,9 @@ export function FilterSortSelector() {
                     <ToggleButton id={"sustainability"} text={"Sustainable"} />
                 </div>
                 <div className="selector_section">
+                    <br/>
                     <p className="selector_heading">Allergens:</p>
+                    <br/>
                     <ToggleButton id={"dairy"} text={"Dairy-Free"} />
                     <ToggleButton id={"gluten"} text={"Gluten-Free"} />
                     <ToggleButton id={"peanuts"} text={"No Peanuts"} />
@@ -161,6 +163,7 @@ export function FilterSortSelector() {
                     <ToggleButton id={"wheat"} text={"No Wheat"} />
                 </div>
                 <div className="selector_section">
+                    <br/>
                     <p className="selector_heading">Sort by:</p>
                     <SortGroup />
                     <SortDirButton />
