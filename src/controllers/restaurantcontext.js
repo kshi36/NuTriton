@@ -101,9 +101,6 @@ export function ContextProvider({ children }) {
 
     }
 
-    //TODO: retrieve foods list from Firestore
-
-
     //TODO: handle searching for restaurants & foods
     // also add filters/sorting if specified
     function searchHandler(searchTerm) {
