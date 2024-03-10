@@ -31,8 +31,7 @@ export default function Login() {
                 const errorCode = err.code;
                 const errorMessage = err.message;
                 console.log("login error:", errorCode, errorMessage);
-
-                // setError("Incorrect login. Please try again or register a new account.");
+          
                 setError(errorMessage.replace("Firebase: ",""));
             });
     }
