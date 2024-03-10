@@ -11,15 +11,8 @@ import Edit from './views/edit profile'
 import Guest from './views/guest profile';
 import Map from './views/map'
 
-import Auth from './views/auth';
-
 import { ContextProvider } from "./controllers/restaurantcontext";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
-import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
- 
-mapboxgl.accessToken = 'pk.eyJ1IjoieGlvbmdkIiwiYSI6ImNsdGozcW9hejBsaDgyaXA1djE4YzcyZXkifQ.z-6FL9gKcIZvQJt5FPD4CA';
-
 
 function App() {
   return (
