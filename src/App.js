@@ -1,5 +1,6 @@
 import './App.css';
 import Header from './views/header';
+import Home from './views/home';
 import Navbar from './views/navbar';
 import RestaurantList from './views/restaurantlist';
 import Security_paper from './views/security';
@@ -21,17 +22,17 @@ function App() {
             <Header/>
             <ContextProvider>
                 <Routes>
-                    <Route exact path="/" element={<RestaurantList/>}/>
+                    <Route exact path="/" element={<Home/>}/>
                     <Route path="/auth" element={<Auth/>}/>
-                    <Route path= "/profile" element = {<Profile/>}/>
+                    <Route path= "/profile" element = {<Home/>}/>
                     <Route path= "/profile_setting" element = {<Profile_setting/>}/>
                     <Route path= "/edit" element = {<Edit/>}/>
                     <Route path= "/guest" element = {<Guest/>}/>
                     <Route path= "/security_paper" element = {<Security_paper/>}/>
-                    <Route path= "/map" element = {<Map/>}/>
+                    <Route path= "/map" element = {<Home/>}/>
                 </Routes>
             </ContextProvider>
-            <Navbar/>
+            {/*<Navbar/>*/}
         </Router>
     </div>
   );
