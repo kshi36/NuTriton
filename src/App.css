@@ -195,3 +195,11 @@ h1{
 .selector_section .button {
   margin: 5px;
 }
+
+.ui.modal {
+  margin-left: -16px;
+}
+
+#if1 {
+  width: 100%;
+}
