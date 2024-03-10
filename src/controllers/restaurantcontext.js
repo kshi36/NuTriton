@@ -114,11 +114,13 @@ export function ContextProvider({ children }) {
         //non-empty search term
         if (searchTerm !== "") {
             const newRestaurantList = restaurants.filter((restaurant) => {
-                return restaurant.name
+                console.log('restaurant',restaurant);
+
+                return restaurant.Name
                     .toLowerCase()
                     .includes(searchTerm.toString().toLowerCase());    //includes() matches string
             });
-            // setSearchRes(newRestaurantList);
+            setSearchRes(newRestaurantList);
         }
         // else setSearchRes(restaurants);
     }
