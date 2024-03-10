@@ -166,6 +166,12 @@ export function ContextProvider({ children }) {
         // sort, if specified        
         function compareSort(a, b) {
             // generic sorting logic
+            if (a[sort_params[0]] == null) {
+                return 1;
+            }
+            else if (b[sort_params[0]] == null) {
+                return -1;
+            }
             const num_a = Number(a[sort_params[0]].replace(/[^0-9.-]+/g,""));
             const num_b = Number(b[sort_params[0]].replace(/[^0-9.-]+/g,""));
             
