@@ -60,7 +60,8 @@ h1{
 
 
 .container img:last-child {
-    margin-right: 200px; 
+    margin-right: 50px;
+    margin-left: 50px; 
 }
 
 .container img:first-child {
