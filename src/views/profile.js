@@ -32,7 +32,7 @@ export default function Profile() {
 
     if (user){
     return (
-        <div class = "main">
+        <div className = "main">
        
         <p>My Profile</p>
         
@@ -41,7 +41,7 @@ export default function Profile() {
 
         </section>
                 <Link to="/profile_setting">
-                <div class="container"><div class="container1">
+                <div className="container"><div className="container1">
                     <img src={Settings}  />
                     <p>Settings           </p>
                     <img src={right_arrow}  />
@@ -49,17 +49,17 @@ export default function Profile() {
                 </Link>
                 
    
-    <div class="container"><div class="container1">
+    <div className="container"><div className="container1">
         <img src={My_diets} alt="description of image"/>
         <p>My diets           </p>
         <img src={right_arrow} alt="description of image" />
         </div></div>
-    <div class="container"><div class="container1">
+    <div className="container"><div className="container1">
             <img src= {Billing}/>
             <p>Billing           </p>
             <img src={right_arrow}  />
             </div></div>
-    <div class="container"><div class="container1">
+    <div className="container"><div className="container1">
                 <img src={Faq} />
                 <p>Faq           </p>
                 <img src={right_arrow}  />
@@ -78,7 +78,7 @@ export default function Profile() {
           </div></div>
           <div className="container"><br></br> <h1>Sorry, no profile for a Guest account.</h1></div>
     
-          <div className="container"><br></br><Link to= "/auth"><button class="styled-button">Login \ Sign-up </button></Link></div>
+          <div className="container"><br></br><Link to= "/auth"><button className="styled-button">Login \ Sign-up </button></Link></div>
 
  
   </div>
