@@ -203,3 +203,10 @@ h1{
 #if1 {
   width: 100%;
 }
+
+.info_header {
+  padding: 0px 20px 20px;
+  margin-top: 0px;
+  text-align: center;
+  line-height: 1.5;
+}

@@ -76,7 +76,7 @@ export default function Profile() {
         <div className="container"><div className="container1">
           <img   src={gonc} alt="guest" style={{height:300, width:360}}/>
           </div></div>
-          <div className="container"><br></br> <h1>Sorry, no profile for a Guest account.</h1></div>
+          <div className="container"><br></br> <h1 className="info_header">Sorry, no profile for a Guest account.</h1></div>
     
           <div className="container"><br></br><Link to= "/auth"><button className="styled-button">Login \ Sign-up </button></Link></div>
 
