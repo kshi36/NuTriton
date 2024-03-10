@@ -9,9 +9,7 @@ import gonc from "./UI/Guest or no connection.png"
 import profile_setting from "./profile_setting"
 import {  Route, Link } from 'react-router-dom'
 
-
-
-export default function     Profile() {
+export default function Profile() {
     //link redirection functionality
     const auth = getAuth();
     const user = auth.currentUser;
@@ -88,4 +86,3 @@ export default function     Profile() {
         )
     }
 }
-

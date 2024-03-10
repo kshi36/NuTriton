@@ -5,8 +5,6 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 
-//TODO: user authentication, maybe move to controllers/authentication.js
-
 export default function Login() {
     //link redirection functionality
     const navigate = useNavigate();
@@ -33,8 +31,8 @@ export default function Login() {
                 const errorCode = err.code;
                 const errorMessage = err.message;
                 console.log("login error:", errorCode, errorMessage);
-
-                setError("Incorrect login. Please try again or register a new account.");
+          
+                setError(errorMessage.replace("Firebase: ",""));
             });
     }
 
@@ -58,8 +56,6 @@ export default function Login() {
                     <button className="ui button green" type="submit"
                             disabled={!email || !password}>Login
                     </button>
-                    {/*<button className="ui button grey">Sign up with Email</button>*/}
-                    {/*<button className="ui button red">Sign up with Google</button>*/}
                     <NavLink to="/">
                         <button className="ui right floated button">Skip</button>
                     </NavLink>
