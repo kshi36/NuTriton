@@ -129,7 +129,7 @@ export function ContextProvider({ children }) {
         // --- apply selector filters
         const filterMap = new Map([
             ["dairy", ["Contains Dairy", "FALSE"]],
-            ["eggs", ["Contains Eggs", "FALSE]"]],
+            ["eggs", ["Contains Eggs", "FALSE"]],
             ["fish", ["Contains Fish", "FALSE"]],
             ["gluten", ["Contains Gluten", "FALSE"]],
             ["peanuts", ["Contains Peanuts", "FALSE"]],
