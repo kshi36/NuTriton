@@ -10,23 +10,23 @@ export default function FoodCard({ food }) {
             <div className="content">
                 <div className="center-div" style={{fontSize:'14px'}}>Nutrition facts:&nbsp;</div>
                 <div className="card nutrition">
-                {food['Vegan'] === "True" && (<div>Vegan;&nbsp;</div>)}
-                {food['Vegetarian'] === "True" && (<div>Vegetarian;&nbsp;</div>)}
-                {food['Sustainability'] === "True" && (<div>Sustainability;&nbsp;</div>)}
-                {food['Wellness'] === "True" && (<div>Wellness;&nbsp;</div>)}
+                {food['Vegan'] === "TRUE" && (<div>Vegan;&nbsp;</div>)}
+                {food['Vegetarian'] === "TRUE" && (<div>Vegetarian;&nbsp;</div>)}
+                {food['Sustainability'] === "TRUE" && (<div>Sustainability;&nbsp;</div>)}
+                {food['Wellness'] === "TRUE" && (<div>Wellness;&nbsp;</div>)}
                 </div>
                 <div className="card nutrition">
                 Contains:&nbsp;
-                {food["Contains Soy"] === "True" && (<div>Soy;&nbsp;</div>)}
-                {food["Contains Diary"] === "True" && (<div>Diary;&nbsp;</div>)}
-                {food["Contains Eggs"] === "True" && (<div>Eggs;&nbsp;</div>)}
-                {food["Contains Fish"] === "True" && (<div>Fish;&nbsp;</div>)}
-                {food["Contains Gluten"] === "True" && (<div>Gluten;&nbsp;</div>)}
-                {food["Contains Peanuts"] === "True" && (<div>Peanuts;&nbsp;</div>)}
-                {food["Contains Sesame"] === "True" && (<div>Sesame;&nbsp;</div>)}
-                {food["Contains Shell Fish"] === "True" && (<div>Shellfish;&nbsp;</div>)}
-                {food["Contains Tree Nuts"] === "True" && (<div>Tree nuts;&nbsp;</div>)}
-                {food["Contains Wheat"] === "True" && (<div>Wheat;&nbsp;</div>)}
+                {food["Contains Soy"] === "TRUE" && (<div>Soy;&nbsp;</div>)}
+                {food["Contains Diary"] === "TRUE" && (<div>Diary;&nbsp;</div>)}
+                {food["Contains Eggs"] === "TRUE" && (<div>Eggs;&nbsp;</div>)}
+                {food["Contains Fish"] === "TRUE" && (<div>Fish;&nbsp;</div>)}
+                {food["Contains Gluten"] === "TRUE" && (<div>Gluten;&nbsp;</div>)}
+                {food["Contains Peanuts"] === "TRUE" && (<div>Peanuts;&nbsp;</div>)}
+                {food["Contains Sesame"] === "TRUE" && (<div>Sesame;&nbsp;</div>)}
+                {food["Contains Shell Fish"] === "TRUE" && (<div>Shellfish;&nbsp;</div>)}
+                {food["Contains Tree Nuts"] === "TRUE" && (<div>Tree nuts;&nbsp;</div>)}
+                {food["Contains Wheat"] === "TRUE" && (<div>Wheat;&nbsp;</div>)}
 
 
                 </div>
