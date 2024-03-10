@@ -50,15 +50,21 @@ i.icon {
 .card.restaurant {
   background-color: rgb(207, 207, 207);
   margin-bottom: 3px;
-  padding: 5px;
+  padding: 10px;
 }
 .card.food {
   color: white; 
   background-color: grey; 
-  padding: 3px; 
+  padding: 10px; 
   margin-bottom: 1px;
 }
-
+.card.nutrition {
+  justify-content: flex-start;
+}
+.invisible-placeholder {
+  visibility: hidden;
+  margin: 10px;
+}
 .selector_section {
   /* padding: 10px; */
   margin-top: 5px;
