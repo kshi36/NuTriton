@@ -39,7 +39,7 @@ export function FilterSortSelector() {
         const buttonClass = active ? 'active' : '';
         
         return (
-            <button className={`ui toggle button sort_btn ${buttonClass}`} value={id} onClick={handleGroupClick}>
+            <button className={`ui toggle button sort_btn ${buttonClass} ${id === "Calories" ? "disabled" : ""}`} value={id} onClick={handleGroupClick}>
                 {text}
             </button>
         );
