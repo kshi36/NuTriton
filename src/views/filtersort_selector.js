@@ -5,7 +5,7 @@ import {IoArrowDown, IoArrowUp, IoFilter} from "react-icons/io5";
 export default function FilterSortSelector() {
 
     const [filterParams, setFilterParams] = useState([]);
-    const { restaurants, getRestaurants, searchTerm, searchRes, searchHandler, filterHandler } = useContextProvider();
+    const { restaurants, getRestaurants, searchTerm, setSearchTerm, searchRes, searchHandler, filterHandler } = useContextProvider();
 
     function ToggleButton({id, text}) {
         // button toggle functionality (highlight/activate), for filters
@@ -24,7 +24,7 @@ export default function FilterSortSelector() {
                 {text}
             </button>
         );
-    };
+    }
 
     function ToggleSortButton({id, active, text, onToggle}) {
         // button toggle functionality for grouped sort buttons
@@ -39,7 +39,7 @@ export default function FilterSortSelector() {
                 {text}
             </button>
         );
-    };
+    }
 
     function SortGroup() {
         // grouped sort buttons, single toggle
@@ -66,7 +66,7 @@ export default function FilterSortSelector() {
         return (
             <button className="ui icon button gray left" id="sort_dir_btn" value={SortAsc ? "asc" : "desc"} onClick={handleSortDir}>{SortAsc ? <IoArrowUp/> : <IoArrowDown/>}</button>
         );
-    };
+    }
 
     function UpdateSelectors() {
         function UpdateFilter() {
@@ -97,8 +97,8 @@ export default function FilterSortSelector() {
             }
         }
 
-        // TODO reset searchbar
-
+        //reset searchbar
+        setSearchTerm("");
 
         // update filters state
         const active_filters = UpdateFilter();

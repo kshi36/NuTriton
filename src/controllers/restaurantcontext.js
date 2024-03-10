@@ -101,8 +101,8 @@ export function ContextProvider({ children }) {
 
     }
 
-    //TODO: handle searching for restaurants & foods
-    // also add filters/sorting if specified
+    //handle searching for restaurants
+    //also add filters/sorting if specified
     function searchHandler(searchTerm) {
         let newRestaurantList = structuredClone(restaurants);
 
@@ -111,7 +111,7 @@ export function ContextProvider({ children }) {
         //non-empty search term
         if (searchTerm !== "") {
             const newRestaurantList = restaurants.filter((restaurant) => {
-                console.log('restaurant',restaurant);
+                // console.log('restaurant',restaurant);
 
                 return restaurant.Name
                     .toLowerCase()
@@ -191,6 +191,7 @@ export function ContextProvider({ children }) {
         getRestaurants,
         searchTerm,
         searchRes,
+        setSearchTerm,
         searchHandler,
         filterHandler,
         filterParams,

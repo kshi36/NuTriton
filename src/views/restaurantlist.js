@@ -6,13 +6,13 @@ import { useEffect, useState } from 'react';
 export default function RestaurantList() {
     const { restaurants, getRestaurants, searchTerm, searchRes, searchHandler, filterHandler, filterParams, sortParam } = useContextProvider();
 
-    // TODO: load restaurants list from Firebase (DB)
+    //load restaurants list from Firebase (DB)
     useEffect(() => {
         getRestaurants();
         
         //logging
         // console.log('incoming restaurant data:', restaurants.length);
-        restaurants.forEach((restaurant) => {console.log("restaurant data: ", restaurant)});
+        // restaurants.forEach((restaurant) => {console.log("restaurant data: ", restaurant)});
     }, []);
 
     // const dummy_restaurants = ["Dirty Birds", "Margherita Pizza", "Tapioca Express", "Taco Villa", "Croutons", "64 degrees", "AI Dente", "Bird Rock", "Blue Bowl"];
@@ -21,7 +21,6 @@ export default function RestaurantList() {
     //                            key={restaurant} />
     // });
 
-    //TODO: filter/sort restaurants will decrease overall list
     const renderList = (searchTerm.length < 1 && filterParams.length < 1 && sortParam == null ? restaurants : searchRes)
     // const renderList = searchRes
         .map((restaurant) => {
@@ -29,7 +28,6 @@ export default function RestaurantList() {
                                key={restaurant.id} />
     });
 
-    //TODO: add UI - filter/sort popup menu
     return (
         <div className="main">
             <div className="ui segment">

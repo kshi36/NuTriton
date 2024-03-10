@@ -72,11 +72,14 @@ h1{
     height: auto; /* Maintain aspect ratio */
 }
 
+.container1 {
+    width:100%;
+}
 .container1 img,
 .container1 p {
     display: inline-block;
     vertical-align: top;
-    width: 600px;
+    width: 200px;
     font-size: 30px;
     line-height: 0.8; 
 }
