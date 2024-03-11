@@ -65,8 +65,8 @@ export default function Profile() {
                 <img src={right_arrow}  />
                 </div> </div> 
 
-    <Link to={"/auth"}><button className="ui button green" type="submit" onClick={onLogout}>Logout</button></Link>
-    <Link to={"/auth"}><button className="ui right floated button" onClick={onDelete}>Delete Account</button></Link>
+    <Link to="/"><button className="ui button green" type="submit" onClick={onLogout}>Logout</button></Link>
+    <Link to="/"><button className="ui right floated button" onClick={onDelete}>Delete Account</button></Link>
     </div>
     );}
     else{
@@ -78,7 +78,7 @@ export default function Profile() {
           </div></div>
           <div className="container"><br></br> <h1 className="info_header">Sorry, no profile for a Guest account.</h1></div>
     
-          <div className="container"><br></br><Link to= "/auth"><button className="styled-button">Login \ Sign-up </button></Link></div>
+          <div className="container"><br></br><Link to= "/"><button className="styled-button">Login \ Sign-up </button></Link></div>
 
  
   </div>
