@@ -55,7 +55,7 @@ export default function Signup() {
                     <button className="ui button green" type="submit"
                             disabled={!email || !password}>Register
                     </button>
-                    <NavLink to="/home">
+                    <NavLink to="/home" state={{page:0}}>
                         <button className="ui right floated button">Skip</button>
                     </NavLink>
                 </form>

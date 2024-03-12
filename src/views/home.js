@@ -18,7 +18,7 @@ export default function Home() {
             { (page === 0) && <RestaurantList/> }
             { (page === 1) && <Map/> }
             { (page === 2) && <Profile/> }
-            <Navbar/>
+            <Navbar activePage={page}/>
         </div>
     );
 }
