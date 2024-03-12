@@ -133,7 +133,7 @@ export default function FilterSortSelector() {
         <>
             <button className="ui icon button gray right" onClick={handleShow}><IoFilter/></button>
 
-            <div className={`ui modal ${show ? 'visible active' : ''}`}>
+            <div className={`ui fixed sticky modal ${show ? 'visible active' : ''}`}>
                 <i className="close icon" onClick={handleClose}></i>
                 <div className="header">Filters</div>
                 <div className="content">

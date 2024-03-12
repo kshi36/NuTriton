@@ -97,7 +97,7 @@ h1{
 .container1 img:last-child {
     width: 25px; /* Set the width of the first image */
     height: auto; /* Maintain aspect ratio */
-    float: "left";
+    float: left;
 }
 
 
@@ -200,7 +200,7 @@ h1{
 }
 
 .ui.modal {
-  margin-left: -16px;
+  margin-left: -2px;
 }
 
 #if1 {

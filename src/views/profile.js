@@ -82,13 +82,12 @@ export default function Profile() {
         return(
             <div className="main">
         <div className="guest_page">
-        <div className="container">
-          <img   src={gonc} alt="guest" style={{height:300, width:360,alignSelf:'center',justifyContent:'center'}}/>
-          </div>
-          <div className="container" style={{width:"100%"}}><br></br> <h3>Sorry, no profile for a Guest account.</h3></div>
-          <br></br><br></br><br></br>
+        <div className="container"><div className="container1">
+          <img   src={gonc} alt="guest" style={{height:300, width:360}}/>
+          </div></div>
+          <div className="container"><br></br> <h1 className="info_header">Sorry, no profile for a Guest account.</h1></div>
+    
           <div className="container"><br></br><Link to= "/auth"><button className="styled-button">Login \ Sign-up </button></Link></div>
-
  
   </div>
       </div>
