@@ -24,8 +24,7 @@ export default function Signup() {
                 //user is created & logged in
                 const user = userCred.user;
                 console.log("user created:", user);
-                // navigate('/login');
-                navigate('/');      //after successful registration, navigate to homepage
+                navigate('/home');      //after successful registration, navigate to homepage
             })
             .catch((err) => {
                 const errorCode = err.code;
@@ -56,7 +55,7 @@ export default function Signup() {
                     <button className="ui button green" type="submit"
                             disabled={!email || !password}>Register
                     </button>
-                    <NavLink to="/">
+                    <NavLink to="/home">
                         <button className="ui right floated button">Skip</button>
                     </NavLink>
                 </form>

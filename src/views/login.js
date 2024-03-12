@@ -24,7 +24,7 @@ export default function Login() {
                 //user is logged in
                 const user = userCred.user;
                 console.log("user logged in:", user);
-                navigate('/');
+                navigate('/home');
 
             })
             .catch((err) => {
@@ -56,7 +56,7 @@ export default function Login() {
                     <button className="ui button green" type="submit"
                             disabled={!email || !password}>Login
                     </button>
-                    <NavLink to="/">
+                    <NavLink to="/home">
                         <button className="ui right floated button">Skip</button>
                     </NavLink>
                 </form>
