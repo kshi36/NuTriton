@@ -1,10 +1,21 @@
 
 import {Link} from 'react-router-dom'
+import left_array from "./UI/left array.png";
 export default function  Security_paper(){
     return(
 <div className="main">
 
-<div className="container1">Welcome, Trirons! As you embark on your journey to maintain a healthy lifestyle amidst the rigors of academic life, 
+    <div className="container1">
+        <Link to="/profile_setting" style={{float:'left'}}>
+            <img src={left_array} />
+            <p >Security           </p>
+        </Link>
+    </div>
+    <br></br>
+    <br></br>
+    <br></br>
+
+<div className="container1">Welcome, Tritons! As you embark on your journey to maintain a healthy lifestyle amidst the rigors of academic life,
 it&apos;s essential to fortify your defenses against cyber threats, including social engineering attacks. In this comprehensive tutorial, 
 we will delve deeper into the nuances of social engineering, provide real-world examples, and offer practical tips to help you safeguard your personal 
 information while using NuTriton.</div>

@@ -25,17 +25,16 @@ function Profile_setting() {
     <div className="main">
     <div className="profile_setting">
         <div className="container"><div className="container1">
-        <Link to="/profile"><img src={left_array} style={{float:'left'}}/></Link>
-        <p >Settings  </p>
+        <Link to="/profile" state={{page:2}}>
+            <img src={left_array} style={{float:'left'}}/>
+            <p >Settings  </p>
+        </Link>
         <br></br><br></br><br></br>
         </div> </div>
    
         <p style={{float:'left'}}>Account</p>
         <br></br>
         <br></br>
-        <br></br>
-
-        
     
     <Segment>
    <Link to="/edit">
