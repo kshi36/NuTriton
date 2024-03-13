@@ -48,4 +48,7 @@
     "jest": "^27.5.1",
     "react-test-renderer": "^18.2.0"
   }
+  ,"jest": {
+    "moduleFileExtensions": ["js", "jsx"]
+  }
 }

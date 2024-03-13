@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {useContextProvider} from "../controllers/restaurantcontext";
 import {IoArrowDown, IoArrowUp, IoFilter} from "react-icons/io5";
-
+import React from 'react'
 export default function FilterSortSelector() {
 
     const [filterParams, setFilterParams] = useState([]);

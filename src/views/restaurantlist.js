@@ -2,6 +2,7 @@ import RestaurantCard from './restaurantcard';
 import { useContextProvider } from "../controllers/restaurantcontext";
 import FilterSortSelector from "./filtersort_selector";
 
+import React from 'react'
 import { useEffect, useState } from 'react';
 export default function RestaurantList() {
     const { restaurants, getRestaurants, searchTerm, searchRes, searchHandler, filterHandler, filterParams, sortParam } = useContextProvider();

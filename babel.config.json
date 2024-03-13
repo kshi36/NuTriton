@@ -1,0 +1,24 @@
+// {
+//     "presets": [[
+//         "@babel/preset-env", 
+//         //"@babel/preset-react", 
+//         {
+//         "runtime": "automatic"
+//       }]
+//       ]
+// }
+
+// {
+//   "presets": [
+//     ["@babel/preset-env", {
+//       //"runtime": "automatic"
+//    }, "@babel/preset-react"]
+//   ],
+//   "plugins": ["@babel/plugin-syntax-jsx"]
+// }
+{
+  "presets": [
+    ["@babel/preset-env", { "targets": "current node" }],
+    "@babel/preset-react"
+  ]
+}
