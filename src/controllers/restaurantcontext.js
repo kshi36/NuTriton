@@ -24,6 +24,8 @@ export function ContextProvider({ children }) {
     // retrieve restaurants list and food for each from Firestore
     async function getRestaurants() {
         // change this to false to use Firebase data
+        // NOTE: we've closed off access to the database and require an API key for now,
+        //     due to rate limiting at the free tier for Firebase
         const TESTING = true;
         if (TESTING) {
             const test_data = [
@@ -88,6 +90,7 @@ export function ContextProvider({ children }) {
             setRestaurants(test_data);
         }
         else {
+            // retrieve foods list from Firestore
             const res = await getDocs(collection(db, resdb_name));
             if (res) {
                 const res_list = res.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
@@ -101,16 +104,13 @@ export function ContextProvider({ children }) {
 
     }
 
-    //TODO: retrieve foods list from Firestore
-
-
-    //TODO: handle searching for restaurants & foods
-    // also add filters/sorting if specified
     function searchHandler(searchTerm) {
+        // handle searching for restaurants & foods
         let newRestaurantList = structuredClone(restaurants);
 
-        // --- apply search filter
+        // apply search filter
         setSearchTerm(searchTerm);
+
         //non-empty search term
         if (searchTerm !== "") {
             const newRestaurantList = restaurants.filter((restaurant) => {
@@ -122,13 +122,12 @@ export function ContextProvider({ children }) {
             });
             setSearchRes(newRestaurantList);
         }
-        // else setSearchRes(restaurants);
     }
 
     function filterHandler(filter_params, sort_params) {    
         // Update filters and sorting
 
-        // --- apply selector filters
+        // map of selector filters
         const filterMap = new Map([
             ["dairy", ["Contains Dairy", "FALSE"]],
             ["eggs", ["Contains Eggs", "FALSE"]],
@@ -145,25 +144,20 @@ export function ContextProvider({ children }) {
             ["wellness", ["Wellness", "TRUE"]],
             ["sustainability", ["Sustainability", "TRUE"]],
         ])
+
         setFilterParams(filter_params);
         let newRestaurantList = structuredClone(restaurants);
         if (filter_params.length > 0) {
-            // newRestaurantList = newRestaurantList.filter((restaurant) => {
             newRestaurantList.forEach((restaurant, i) => {
                 // filter "menu" foods
                 for (let j = 0; j < filter_params.length; j++) {
                     const filter_tuple = filterMap.get(filter_params[j]);
                     console.log("filter tuple: ", filter_tuple);
-                    // this_menu.filter(food => food[filter_tuple[0]] == filter_tuple[1])
                     newRestaurantList[i].menu = newRestaurantList[i]["menu"].filter(food => food[filter_tuple[0]] == filter_tuple[1])
                 }
-                console.log("filtered: ", newRestaurantList[i].menu);
-                // restaurant.menu = this_menu;
             })
-            // setSearchRes(newRestaurantList);
         }
 
-        // sort, if specified        
         function compareSort(a, b) {
             // generic sorting logic
             if (a[sort_params[0]] == null) {
@@ -178,6 +172,7 @@ export function ContextProvider({ children }) {
             return num_b - num_a;
         }
 
+        // sort, if specified       
         setSortParam(sort_params[0]);
         if (sort_params[0] !== null) {
             setSortAsc(sort_params[1] === "asc");
@@ -186,15 +181,14 @@ export function ContextProvider({ children }) {
                 if (sort_params[1] === "desc") {
                     newRestaurantList[i].menu = newRestaurantList[i].menu.reverse();
                 }
-                console.log("sorted: ", newRestaurantList[i].menu)
             });
-            // setSearchRes(newRestaurantList);
         }
 
-        console.log("final: ", newRestaurantList);
+        // update results
         setSearchRes(newRestaurantList);
     }
     
+    // values to hand off
     const value = {
         restaurants,
         getRestaurants,
