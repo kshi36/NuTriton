@@ -122,6 +122,7 @@ export function ContextProvider({ children }) {
             });
             setSearchRes(newRestaurantList);
         }
+        else setSearchRes(restaurants);
     }
 
     function filterHandler(filter_params, sort_params) {    
@@ -152,7 +153,7 @@ export function ContextProvider({ children }) {
                 // filter "menu" foods
                 for (let j = 0; j < filter_params.length; j++) {
                     const filter_tuple = filterMap.get(filter_params[j]);
-                    console.log("filter tuple: ", filter_tuple);
+                    // console.log("filter tuple: ", filter_tuple);
                     newRestaurantList[i].menu = newRestaurantList[i]["menu"].filter(food => food[filter_tuple[0]] == filter_tuple[1])
                 }
             })
