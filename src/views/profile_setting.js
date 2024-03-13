@@ -16,76 +16,99 @@ import Data from "./UI/Data saver.png"
 import Report from "./UI/Report a problem.png"
 import Add from "./UI/Add an account.png"
 
+import { Segment } from 'semantic-ui-react'
+
 var perf =require('./security.js');
 
 function Profile_setting() {
   return (
     <div className="main">
     <div className="profile_setting">
-        <div className="container" style={{marginLeft:450}}><div className="container1">
-        <Link to="/profile"><img src={left_array} /></Link>
-        <p >Settings  </p>
-
+        <div className="container"><div className="container1">
+        <Link to="/profile" state={{page:2}}>
+            <img src={left_array} style={{float:'left'}}/>
+            <p >Settings  </p>
+        </Link>
+        <br></br><br></br><br></br>
         </div> </div>
    
-        <div className="container"><p style={{marginRight:230}}>Account</p></div>
-   <Link to="/edit">
-   <div className="container" style={{marginRight:110}}><div className="container2">
-        <img src={Edit_profile} />
-        <p>Edit profile           </p>
-        </div></div>
-        </Link>
-        <Link to="/security_paper"><div className="container" style={{marginRight:110}}><div className="container2">
-    <img src= {Security}/><p>Security           </p>
+        <p style={{float:'left'}}>Account</p>
+        <br></br>
+        <br></br>
     
+    <Segment>
+   <Link to="/edit">
+   <div className="container" ><div className="container2">
+        <img src={Edit_profile} />
+        <p >Edit profile           </p>
+        
+        </div></div> 
+        </Link>
+        <div className="ui divider"></div> 
+        <Link to="/security_paper">
+    
+    <div className="container" ><div className="container2">
+    <img src= {Security}/><p>Security           </p>
     </div></div></Link>
 
-    <div className="container" style={{marginRight:110}}><div className="container2">
+    <div className="ui divider"></div> 
+    <div className="container" ><div className="container2">
         <img src={Notifications} />
         <p>Notifications           </p>
         </div></div>
+    <div className="ui divider"></div> 
 
-    <div className="container" style={{marginRight:110}}><div className="container2">
+    <div className="container" ><div className="container2">
             <img src={Privacy} />
             <p>Privacy           </p>
-            </div></div>
+            </div></div></Segment>
     
 
-            <div className="container"><p style={{marginRight:230}}>Support & About</p></div>
-    <div className="container" style={{marginRight:110}}><div className="container2">
+    <p>Support & About</p>
+
+    <Segment>
+    <div className="container" ><div className="container2">
     <img src={Help} />
     <p>Help and Support </p>
     </div></div>
 
-    <div className="container" style={{marginRight:110}}><div className="container2">
+    <div className="ui divider"></div> 
+
+    <div className="container" ><div className="container2">
         <img src={Terms} />
         <p>Terms and Policies </p>
         </div></div>
-
-        <div className="container"><p style={{marginRight:230}}>Cache & celluar</p></div>
-
-   <div className="container" style={{marginRight:110}}><div className="container2">
+        </Segment>
+        <p >Cache & celluar</p>
+    <Segment>
+   <div className="container"><div className="container2">
     <img src={Free}/>
     <p>Free up space           </p>
     </div></div>
 
-    <div className="container" style={{marginRight:110}}><div className="container2">
+    <div className="ui divider"></div> 
+
+    <div className="container" ><div className="container2">
         <img src={Data}/>
         <p>Data Saver           </p>
         </div></div>
+        </Segment>
 
-    <div className="container"><p style={{marginRight:230}}>Actions</p></div>
+    <p style={{marginRight:230}}>Actions</p>
 
-    <div className="container" style={{marginRight:110}}><div className="container2">
+    <Segment>
+    <div className="container" ><div className="container2">
     <img src= {Report}/>
     <p>Report a problem           </p>
     </div></div>
 
-    <div className="container" style={{marginRight:110}}><div className="container2">
+    <div className="ui divider"></div> 
+
+    <div className="container" ><div className="container2">
         <img src={Add} />
         <p>Add account           </p>
         </div></div>
-
+        </Segment>
         </div></div>
     
   );

@@ -114,7 +114,7 @@ export function ContextProvider({ children }) {
         //non-empty search term
         if (searchTerm !== "") {
             const newRestaurantList = restaurants.filter((restaurant) => {
-                console.log('restaurant',restaurant);
+                // console.log('restaurant',restaurant);
 
                 return restaurant.Name
                     .toLowerCase()
@@ -194,6 +194,7 @@ export function ContextProvider({ children }) {
         getRestaurants,
         searchTerm,
         searchRes,
+        setSearchTerm,
         searchHandler,
         filterHandler,
         filterParams,

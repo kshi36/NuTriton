@@ -19,7 +19,7 @@ export default function RestaurantCard({ restaurant }) {
     }
 
     const renderList = menu.map((food) => {
-        return <FoodCard food={food} key={food.Name} />
+        return <FoodCard food={food} key={food.id} />
     });
 
     function InnerFav({ onClick }) {

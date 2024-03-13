@@ -6,15 +6,19 @@ function Edit() {
     return (
       <div className="main">
           <div className="container1">
-        <Link to="/profile_setting" style={{marginLeft:260}}><img src={left_array} /></Link>
-        <p >Edit profile           </p>
-
+        <Link to="/profile_setting" style={{float:'left'}}>
+            <img src={left_array} />
+            <p >Edit profile           </p>
+        </Link>
         </div>
         <br></br>
-        
-        <div className="container">
-    <p>Name</p>
+        <br></br>
+        <br></br>
+
+        <div className="container" style={{width:'100%'}}>
+    <p >Name</p>
     <input type="text" placeholder="Type here"/></div>
+    
     <div className="container">
     <br></br><p>Email</p>
     <input type="text" placeholder="Type here"/></div>
